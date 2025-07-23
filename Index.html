@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="referrer" content="no-referrer-when-downgrade" />
-    <meta name="2395d985458a578c780a10d4187ca99873d4faff" content="2395d985458a578c780a10d4187ca99873d4faff" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EntertainMe - Your Ultimate Entertainment Hub</title>
     <style>
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,10 +13,11 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif; /* Changed font to Inter */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
@@ -35,6 +35,8 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 15px; /* Rounded corners */
+            border-bottom-right-radius: 15px; /* Rounded corners */
         }
 
         nav {
@@ -112,6 +114,7 @@
             margin: 15px 0;
             cursor: pointer;
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Added shadow */
         }
 
         .ad-sidebar:hover {
@@ -195,6 +198,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Added shadow */
         }
 
         .content-card::before {
@@ -260,11 +264,17 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
         }
 
         .quiz-option:hover {
             transform: scale(1.05);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .quiz-option:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         /* Trending Section */
@@ -274,6 +284,7 @@
             padding: 2rem;
             border-radius: 20px;
             margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(255, 154, 158, 0.3); /* Added shadow */
         }
 
         .trending-items {
@@ -305,6 +316,7 @@
             border-radius: 20px;
             text-align: center;
             margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); /* Added shadow */
         }
 
         .newsletter-form {
@@ -321,6 +333,7 @@
             flex: 1;
             max-width: 300px;
             font-size: 1rem;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
         }
 
         .newsletter-button {
@@ -332,6 +345,7 @@
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
         }
 
         .newsletter-button:hover {
@@ -346,6 +360,8 @@
             padding: 2rem 0;
             text-align: center;
             margin-top: 2rem;
+            border-top-left-radius: 15px; /* Rounded corners */
+            border-top-right-radius: 15px; /* Rounded corners */
         }
 
         /* Animations */
@@ -364,6 +380,119 @@
             0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
+
+        /* Custom Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .modal-close-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .modal-close-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
+        }
+
+        /* Modal type specific styling */
+        .modal-content.success h3 { color: #4CAF50; }
+        .modal-content.error h3 { color: #f44336; }
+        .modal-content.info h3 { color: #2196F3; }
+
+        /* Loading Indicator (Placeholder for future image generation) */
+        .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .loading-indicator.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #667eea;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -387,10 +516,85 @@
             .quiz-options {
                 grid-template-columns: 1fr;
             }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin-bottom: 5px;
+            }
+
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            .content-area, .interactive-section, .trending-section, .newsletter {
+                padding: 1.5rem;
+            }
+
+            .content-card {
+                padding: 1rem;
+            }
+
+            .content-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .quiz-question {
+                font-size: 1rem;
+            }
+
+            .quiz-option {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .newsletter-input {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .newsletter-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .ad-banner {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+
+            .ad-sidebar {
+                padding: 10px;
+            }
+
+            .ad-sidebar h4 {
+                font-size: 1rem;
+            }
+
+            .ad-sidebar p, .ad-sidebar small {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
     <header>
         <nav class="container">
             <div class="logo">EntertainMe</div>
@@ -525,6 +729,7 @@
         </div>
     </div>
 
+    <!-- Footer Section -->
     <footer>
         <div class="container">
             <p>&copy; 2025 EntertainMe. All rights reserved. | Privacy Policy | Terms of Service</p>
@@ -532,22 +737,98 @@
         </div>
     </footer>
 
+    <!-- Custom Modal Structure -->
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+            <button class="modal-close-button" onclick="hideModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Loading Indicator Structure (Currently hidden, for future use) -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="spinner"></div>
+    </div>
+
     <script>
+        // Global variables for tracking engagement metrics
         let adClicks = 0;
-        let pageViews = 1;
+        let pageViews = 1; // Initialize with 1 for the initial page load
         let userEngagement = 0;
 
-        // Ad Click Tracking
+        // --- Custom Modal Functions ---
+
+        /**
+         * Displays a custom modal with a given title and message.
+         * @param {string} title - The title of the modal.
+         * @param {string} message - The message content of the modal.
+         * @param {string} [type='info'] - Optional type ('success', 'error', 'info') for styling.
+         */
+        function showModal(title, message, type = 'info') {
+            const modalOverlay = document.getElementById('customModal');
+            const modalContent = modalOverlay.querySelector('.modal-content');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+
+            // Set modal content
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+
+            // Apply type-specific styling
+            modalContent.className = 'modal-content'; // Reset classes
+            modalContent.classList.add(type);
+
+            // Show the modal
+            modalOverlay.classList.add('active');
+        }
+
+        /**
+         * Hides the custom modal.
+         */
+        function hideModal() {
+            const modalOverlay = document.getElementById('customModal');
+            modalOverlay.classList.remove('active');
+        }
+
+        // --- Loading Indicator Functions ---
+
+        /**
+         * Shows the loading indicator.
+         */
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.add('active');
+        }
+
+        /**
+         * Hides the loading indicator.
+         */
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.remove('active');
+        }
+
+        // --- Core Website Functions ---
+
+        /**
+         * Handles ad clicks, updates engagement metrics, and simulates an ad redirect.
+         * Uses the custom modal instead of alert().
+         * @param {string} adType - The type of ad clicked (e.g., 'banner', 'sidebar1').
+         */
         function adClick(adType) {
             adClicks++;
             userEngagement += 10;
             updateStats();
             
-            // Simulate ad redirect
-            alert(`Ad clicked! Type: ${adType}\\nThis would redirect to advertiser's website.\\nRevenue generated: $${(Math.random() * 2 + 0.5).toFixed(2)}`);
+            // Simulate revenue generation
+            const revenue = (Math.random() * 2 + 0.5).toFixed(2);
+            showModal('Ad Clicked!', `You clicked on an ad of type: ${adType}.\nThis would typically redirect you to the advertiser's website.\nSimulated revenue generated: $${revenue}`, 'info');
         }
 
-        // Content Interaction
+        /**
+         * Displays content specific to the selected entertainment type.
+         * Uses the custom modal instead of alert().
+         * @param {string} type - The type of content to show (e.g., 'movies', 'games').
+         */
         function showContent(type) {
             userEngagement += 5;
             updateStats();
@@ -559,42 +840,52 @@
                 tv: "📺 TV Shows: Binge-worthy series and must-watch documentaries!"
             };
             
-            alert(contentTypes[type] || "Content loading...");
+            showModal(`Exploring ${type.charAt(0).toUpperCase() + type.slice(1)}`, contentTypes[type] || "Content loading...", 'info');
         }
 
-        // Quiz Functionality
+        /**
+         * Checks the answer for the current quiz question, updates UI, and provides feedback.
+         * Uses the custom modal for feedback instead of alert().
+         * @param {HTMLElement} button - The button element that was clicked.
+         * @param {boolean} isCorrect - True if the selected answer is correct, false otherwise.
+         */
         function checkAnswer(button, isCorrect) {
-            const result = document.getElementById('quizResult');
+            const resultElement = document.getElementById('quizResult');
             const options = document.querySelectorAll('.quiz-option');
             
+            // Disable all options to prevent multiple selections
             options.forEach(option => option.disabled = true);
             
             if (isCorrect) {
                 button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
-                result.innerHTML = '🎉 Correct! "Everything Everywhere All at Once" won Best Picture!';
-                result.style.color = '#4CAF50';
+                resultElement.innerHTML = '🎉 Correct! "Everything Everywhere All at Once" won Best Picture!';
+                resultElement.style.color = '#4CAF50';
                 userEngagement += 15;
+                showModal('Quiz Result', '🎉 Correct! You got it right!', 'success');
             } else {
                 button.style.background = 'linear-gradient(45deg, #f44336, #da190b)';
-                result.innerHTML = '❌ Not quite! The correct answer is "Everything Everywhere All at Once"';
-                result.style.color = '#f44336';
+                resultElement.innerHTML = '❌ Not quite! The correct answer is "Everything Everywhere All at Once"';
+                resultElement.style.color = '#f44336';
                 userEngagement += 5;
+                showModal('Quiz Result', '❌ Incorrect! Try again next time.', 'error');
             }
             
             updateStats();
             
-            // Reset quiz after 3 seconds
+            // Reset quiz after a short delay
             setTimeout(() => {
                 options.forEach(option => {
                     option.disabled = false;
                     option.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
                 });
-                result.innerHTML = '';
-                loadNewQuiz();
+                resultElement.innerHTML = '';
+                loadNewQuiz(); // Load a new question
             }, 3000);
         }
 
-        // Load New Quiz Question
+        /**
+         * Loads a new random quiz question and updates the quiz interface.
+         */
         function loadNewQuiz() {
             const questions = [
                 {
@@ -611,40 +902,63 @@
                     question: "Which video game character is known for collecting rings?",
                     options: ["Mario", "Link", "Sonic", "Pac-Man"],
                     correct: 2
+                },
+                {
+                    question: "Who composed the soundtrack for 'The Lion King' (1994 animated film)?",
+                    options: ["Hans Zimmer", "John Williams", "Ennio Morricone", "Alan Menken"],
+                    correct: 0
+                },
+                {
+                    question: "Which band released the album 'Dark Side of the Moon'?",
+                    options: ["Led Zeppelin", "The Beatles", "Pink Floyd", "Queen"],
+                    correct: 2
                 }
             ];
             
+            // Select a random question
             const randomQ = questions[Math.floor(Math.random() * questions.length)];
             document.getElementById('quizQuestion').textContent = randomQ.question;
             
             const options = document.querySelectorAll('.quiz-option');
             options.forEach((option, index) => {
                 option.textContent = randomQ.options[index];
+                // Update the click handler to pass the correct answer index
                 option.onclick = () => checkAnswer(option, index === randomQ.correct);
             });
         }
 
-        // Trending Search
+        /**
+         * Simulates a search based on the clicked trending tag.
+         * Uses the custom modal instead of alert().
+         * @param {HTMLElement} tag - The trending tag element that was clicked.
+         */
         function searchTrending(tag) {
             userEngagement += 3;
             updateStats();
-            alert(`Searching for ${tag.textContent}...\\nThis would show related content and articles!`);
+            showModal('Trending Search', `Searching for "${tag.textContent}"...\nThis would show related content and articles!`, 'info');
         }
 
-        // Newsletter Subscription
+        /**
+         * Handles newsletter subscription, validates email, and provides feedback.
+         * Uses the custom modal instead of alert().
+         */
         function subscribe() {
-            const email = document.getElementById('emailInput').value;
-            if (email && email.includes('@')) {
+            const emailInput = document.getElementById('emailInput');
+            const email = emailInput.value;
+
+            if (email && email.includes('@') && email.includes('.')) { // Basic email validation
                 userEngagement += 20;
                 updateStats();
-                alert(`Thanks for subscribing with ${email}!\\nYou'll receive our entertainment newsletter weekly.`);
-                document.getElementById('emailInput').value = '';
+                showModal('Subscription Successful!', `Thanks for subscribing with ${email}!\nYou'll receive our entertainment newsletter weekly.`, 'success');
+                emailInput.value = ''; // Clear the input field
             } else {
-                alert('Please enter a valid email address.');
+                showModal('Subscription Failed', 'Please enter a valid email address.', 'error');
             }
         }
 
-        // Smooth Scroll
+        /**
+         * Smoothly scrolls the viewport to the main content area.
+         */
         function scrollToContent() {
             document.querySelector('.main-content').scrollIntoView({ 
                 behavior: 'smooth' 
@@ -653,7 +967,10 @@
             updateStats();
         }
 
-        // Update Statistics (for demonstration)
+        /**
+         * Updates and logs the current engagement statistics.
+         * Also updates the page title to reflect engagement and simulated revenue.
+         */
         function updateStats() {
             console.log(`Page Views: ${pageViews} | Ad Clicks: ${adClicks} | Engagement Score: ${userEngagement}`);
             
@@ -661,49 +978,131 @@
             document.title = `EntertainMe - Engagement: ${userEngagement} | Ad Revenue: $${(adClicks * 1.25).toFixed(2)}`;
         }
 
-        // Simulate page view tracking
+        /**
+         * Tracks a page view, incrementing the pageViews counter.
+         */
         function trackPageView() {
             pageViews++;
             console.log('Page view tracked:', pageViews);
         }
 
-        // Auto-rotate trending tags
+        /**
+         * Rotates the visual emphasis on trending tags to simulate activity.
+         */
         function rotateTrending() {
             const tags = document.querySelectorAll('.trending-tag');
             let currentIndex = 0;
             
             setInterval(() => {
+                // Remove highlight from previous tag
                 tags.forEach(tag => tag.style.transform = 'scale(1)');
+                // Highlight current tag
                 tags[currentIndex].style.transform = 'scale(1.1)';
+                // Move to next tag
                 currentIndex = (currentIndex + 1) % tags.length;
-            }, 2000);
+            }, 2000); // Change tag every 2 seconds
         }
 
-        // Initialize
+        // --- Event Listeners and Initialization ---
+
+        // Ensures that the DOM is fully loaded before running scripts
         document.addEventListener('DOMContentLoaded', function() {
-            trackPageView();
-            rotateTrending();
-            updateStats();
+            trackPageView(); // Track initial page view
+            loadNewQuiz(); // Load the first quiz question
+            rotateTrending(); // Start trending tag rotation
+            updateStats(); // Initial stats update
             
-            // Simulate user activity for demo
+            // Simulate continuous user activity for demo purposes
             setInterval(() => {
-                userEngagement += 1;
-                if (Math.random() < 0.1) { // 10% chance of ad impression
+                userEngagement += 1; // Increment engagement over time
+                if (Math.random() < 0.1) { // 10% chance of simulating an ad impression
                     console.log('Ad impression recorded');
                 }
-            }, 5000);
+                updateStats(); // Update stats periodically
+            }, 5000); // Every 5 seconds
         });
 
         // Track scroll depth for engagement
-        let maxScroll = 0;
+        let maxScroll = 0; // Tracks the maximum scroll percentage reached
         window.addEventListener('scroll', () => {
+            // Calculate scroll percentage
             const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
             if (scrollPercent > maxScroll) {
-                maxScroll = scrollPercent;
+                maxScroll = scrollPercent; // Update max scroll
+                // Add engagement based on scroll depth (e.g., every 25% scrolled)
                 userEngagement += Math.floor(scrollPercent / 25);
                 updateStats();
             }
         });
+    </script>
+
+    <!-- Ad Monetization Scripts - Added for monetization purposes -->
+    <!-- Popunder Script -->
+    <script>
+    (function(hyxh){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = hyxh || {};
+    s.src = "\/\/mustymix.com\/c\/D.9v6Jb_2N5\/lZSBWwQY9zN\/jzUfyPNGzXYb0POoSg0r2KNfT\/Id3\/Nkj\/Uowf";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- MultiTag Banners Script 1 -->
+    <script>
+    (function(cpds){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = cpds || {};
+    s.src = "\/\/whirlwindincrease.com\/bFXBVis-d.G\/l_0wY\/WncB\/ae\/mN9RuhZVUul\/kkP\/TGYT1rMmj\/c\/2-NHjwYUtBNvj\/UpyvNTzZYQ2eNZwl";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- MultiTag Banners Script 2 -->
+    <script>
+    (function(vpnez){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = vpnez || {};
+    s.src = "\/\/whirlwindincrease.com\/b.XYVzsVdiGnle0SYbWNcZ\/Lewmo9\/uFZxUElZkvP-TOYc1DMljRc\/2YNCTZcctQNBj\/UfyJNUzOYr1QOLAS";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- LKVueBlocks.invocTypeMultitagVast Script -->
+    <script>
+    (function(lh){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = lh || {};
+    s.src = "\/\/whirlwindincrease.com\/bbXeV.sodbGZl\/0\/YUWacI\/MeQmP9wuHZ\/UblMk\/PbTgY\/1xMsjcc\/2RNyzEYntiNgjgUmykN\/z\/Y-3HNKwE";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- VAST Ad Script (Direct URL) -->
+    <script>
+        // This script directly loads the VAST ad tag.
+        // In a real-world scenario, you might integrate this with a video player
+        // or a more sophisticated ad manager.
+        const vastScript = document.createElement('script');
+        vastScript.src = "https://mustymix.com/dCmqFQz.dcG/NnvYZtGsUw/zekmZ9ju/ZAU/l-kHPhTkYA1/MOjMc/2QO/DEYpteNSjlUFywNBz_Yq4QNfwf";
+        vastScript.async = true;
+        vastScript.referrerPolicy = 'no-referrer-when-downgrade';
+        document.body.appendChild(vastScript);
     </script>
 </body>
 </html>
