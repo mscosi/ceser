@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EntertainMe - Your Ultimate Entertainment Hub</title>
     <style>
-        /* Global Styles */
+        /* Estilos Globales */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif; /* Changed font to Inter */
+            font-family: 'Inter', sans-serif; /* Fuente cambiada a Inter */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
@@ -26,7 +26,7 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Encabezado */
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -35,8 +35,8 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            border-bottom-left-radius: 15px; /* Rounded corners */
-            border-bottom-right-radius: 15px; /* Rounded corners */
+            border-bottom-left-radius: 15px; /* Bordes redondeados */
+            border-bottom-right-radius: 15px; /* Bordes redondeados */
         }
 
         nav {
@@ -87,7 +87,7 @@
             width: 100%;
         }
 
-        /* Ad Banners */
+        /* Banners de Anuncios */
         .ad-banner {
             background: linear-gradient(45deg, #ff9a9e, #fecfef);
             color: white;
@@ -114,14 +114,14 @@
             margin: 15px 0;
             cursor: pointer;
             transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Added shadow */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra añadida */
         }
 
         .ad-sidebar:hover {
             transform: scale(1.05);
         }
 
-        /* Hero Section */
+        /* Sección Hero */
         .hero {
             text-align: center;
             padding: 4rem 0;
@@ -161,7 +161,7 @@
             box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
         }
 
-        /* Main Content */
+        /* Contenido Principal */
         .main-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -181,7 +181,7 @@
             flex-direction: column;
         }
 
-        /* Content Cards */
+        /* Tarjetas de Contenido */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -198,7 +198,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Added shadow */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra añadida */
         }
 
         .content-card::before {
@@ -229,7 +229,170 @@
             font-size: 1.3rem;
         }
 
-        /* Interactive Features */
+        /* Sección de Contenido Destacado */
+        .featured-section {
+            background: linear-gradient(135deg, #fecfef, #ff9a9e);
+            color: #333;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(254, 207, 239, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .featured-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #764ba2;
+        }
+
+        .featured-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sección de Próximos Eventos */
+        .upcoming-events-section {
+            background: linear-gradient(135deg, #d1e0f7, #b2c1ee);
+            color: #333;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(178, 193, 238, 0.3);
+        }
+
+        .upcoming-events-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #4a69bd;
+            text-align: center;
+        }
+
+        .event-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .event-card .event-date {
+            font-weight: bold;
+            color: #667eea;
+            flex-shrink: 0;
+            width: 80px;
+            text-align: center;
+        }
+
+        .event-card .event-details {
+            flex-grow: 1;
+        }
+
+        .event-card .event-title {
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+            color: #333;
+        }
+
+        .event-card .event-description {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+
+        /* Sección de Reseñas de Usuarios */
+        .reviews-section {
+            background: linear-gradient(135deg, #e0f2f7, #c1e4ee);
+            color: #333;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(193, 228, 238, 0.3);
+        }
+
+        .reviews-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2196F3;
+            text-align: center;
+        }
+
+        .review-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-card .author {
+            font-weight: bold;
+            text-align: right;
+            display: block;
+            color: #777;
+        }
+
+        /* Sección de Categorías por Género */
+        .categories-section {
+            background: linear-gradient(135deg, #d1f7e0, #b2eec1);
+            color: #333;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(178, 238, 193, 0.3);
+        }
+
+        .categories-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .category-tag {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-tag:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* Características Interactivas */
         .interactive-section {
             background: white;
             border-radius: 20px;
@@ -264,7 +427,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra añadida */
         }
 
         .quiz-option:hover {
@@ -277,14 +440,14 @@
             cursor: not-allowed;
         }
 
-        /* Trending Section */
+        /* Sección de Tendencias */
         .trending-section {
             background: linear-gradient(135deg, #ff9a9e, #fecfef);
             color: white;
             padding: 2rem;
             border-radius: 20px;
             margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(255, 154, 158, 0.3); /* Added shadow */
+            box-shadow: 0 10px 40px rgba(255, 154, 158, 0.3); /* Sombra añadida */
         }
 
         .trending-items {
@@ -308,7 +471,7 @@
             transform: scale(1.1);
         }
 
-        /* Newsletter Signup */
+        /* Suscripción a Boletín */
         .newsletter {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -316,7 +479,7 @@
             border-radius: 20px;
             text-align: center;
             margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); /* Added shadow */
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); /* Sombra añadida */
         }
 
         .newsletter-form {
@@ -333,7 +496,7 @@
             flex: 1;
             max-width: 300px;
             font-size: 1rem;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra añadida */
         }
 
         .newsletter-button {
@@ -345,7 +508,7 @@
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra añadida */
         }
 
         .newsletter-button:hover {
@@ -353,18 +516,18 @@
             transform: scale(1.05);
         }
 
-        /* Footer */
+        /* Pie de página */
         footer {
             background: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 2rem 0;
             text-align: center;
             margin-top: 2rem;
-            border-top-left-radius: 15px; /* Rounded corners */
-            border-top-right-radius: 15px; /* Rounded corners */
+            border-top-left-radius: 15px; /* Bordes redondeados */
+            border-top-right-radius: 15px; /* Bordes redondeados */
         }
 
-        /* Animations */
+        /* Animaciones */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -381,7 +544,7 @@
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
-        /* Custom Modal Styles */
+        /* Estilos de Modal Personalizado */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -452,12 +615,12 @@
             box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
         }
 
-        /* Modal type specific styling */
+        /* Estilos específicos de tipo de modal */
         .modal-content.success h3 { color: #4CAF50; }
         .modal-content.error h3 { color: #f44336; }
         .modal-content.info h3 { color: #2196F3; }
 
-        /* Loading Indicator (Placeholder for future image generation) */
+        /* Indicador de Carga (Marcador de posición para futura generación de imágenes) */
         .loading-indicator {
             position: fixed;
             top: 0;
@@ -494,7 +657,7 @@
         }
 
 
-        /* Responsive Design */
+        /* Diseño Responsivo */
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -543,7 +706,7 @@
                 font-size: 1rem;
             }
 
-            .content-area, .interactive-section, .trending-section, .newsletter {
+            .content-area, .interactive-section, .trending-section, .newsletter, .featured-section, .reviews-section, .categories-section, .upcoming-events-section {
                 padding: 1.5rem;
             }
 
@@ -590,180 +753,291 @@
             .ad-sidebar p, .ad-sidebar small {
                 font-size: 0.8rem;
             }
+
+            .featured-section h3, .reviews-section h3, .categories-section h3, .upcoming-events-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .featured-description {
+                font-size: 1rem;
+            }
+
+            .review-card p {
+                font-size: 0.9rem;
+            }
+
+            .category-tag {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .event-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .event-card .event-date {
+                width: auto;
+                text-align: left;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Sección de Encabezado -->
     <header>
         <nav class="container">
             <div class="logo">EntertainMe</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="#trending">Trending</a></li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#movies">Películas</a></li>
+                <li><a href="#games">Juegos</a></li>
+                <li><a href="#music">Música</a></li>
+                <li><a href="#trending">Tendencias</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <!-- Hero Section -->
+        <!-- Sección Hero -->
         <section class="hero">
-            <h1>Welcome to EntertainMe</h1>
-            <p>Your ultimate destination for movies, games, music, and endless entertainment</p>
-            <button class="cta-button" onclick="scrollToContent()">Explore Now</button>
+            <h1>Bienvenido a EntertainMe</h1>
+            <p>Tu destino definitivo para películas, juegos, música y entretenimiento sin fin</p>
+            <button class="cta-button" onclick="scrollToContent()">Explorar Ahora</button>
         </section>
 
-        <!-- Top Ad Banner -->
+        <!-- Banner de Anuncio Superior -->
         <div class="ad-banner" onclick="adClick('banner')">
-            🎬 Premium Movie Streaming - 30% Off Today Only! Click Here for Amazing Deals! 🎬
+            🎬 ¡Streaming de Películas Premium - 30% de Descuento Solo Hoy! ¡Haz Clic Aquí para Ofertas Increíbles! 🎬
         </div>
 
-        <!-- Main Content Area -->
+        <!-- Área de Contenido Principal -->
         <div class="main-content">
             <div class="content-area">
-                <h2>Latest Entertainment</h2>
+                <!-- Sección de Contenido Destacado -->
+                <div class="featured-section">
+                    <h3>✨ Destacado Esta Semana: "Odisea Cósmica"</h3>
+                    <img src="https://placehold.co/400x250/667eea/ffffff?text=Odisea+Cosmica" alt="Póster de la Película Odisea Cósmica" class="featured-image">
+                    <p class="featured-description">Embárcate en un viaje épico a través de las estrellas en esta impresionante aventura de ciencia ficción. ¡Imágenes asombrosas y una historia apasionante hacen de "Odisea Cósmica" una visita obligada!</p>
+                    <button class="cta-button" onclick="showContent('movies')">Ver Ahora</button>
+                </div>
+
+                <!-- Espacio para Anuncios MultiTag (Contenido) -->
+                <div id="multitag-ad-content" class="ad-banner" style="min-height: 100px; background: #f0f0f0; color: #555; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc;">
+                    <!-- Los anuncios MultiTag se cargarán aquí -->
+                    <p>Espacio Publicitario</p>
+                </div>
+
+                <h2>Último Entretenimiento</h2>
                 
                 <div class="content-grid">
                     <div class="content-card" onclick="showContent('movies')">
-                        <h3>🎬 Blockbuster Movies</h3>
-                        <p>Discover the latest blockbusters, indie films, and timeless classics. From action-packed adventures to heartwarming dramas.</p>
+                        <h3>🎬 Películas de Éxito</h3>
+                        <p>Descubre los últimos éxitos de taquilla, películas independientes y clásicos atemporales. Desde aventuras llenas de acción hasta dramas conmovedores.</p>
                     </div>
                     
                     <div class="content-card" onclick="showContent('games')">
-                        <h3>🎮 Gaming Zone</h3>
-                        <p>Dive into the world of gaming with reviews, walkthroughs, and the latest releases across all platforms.</p>
+                        <h3>🎮 Zona de Juegos</h3>
+                        <p>Sumérgete en el mundo de los videojuegos con reseñas, guías y los últimos lanzamientos en todas las plataformas.</p>
                     </div>
                     
                     <div class="content-card" onclick="showContent('music')">
-                        <h3>🎵 Music Hub</h3>
-                        <p>Explore new artists, chart-toppers, and hidden gems across all genres. Your musical journey starts here.</p>
+                        <h3>🎵 Centro de Música</h3>
+                        <p>Explora nuevos artistas, éxitos de las listas y joyas ocultas de todos los géneros. Tu viaje musical comienza aquí.</p>
                     </div>
                     
                     <div class="content-card" onclick="showContent('tv')">
-                        <h3>📺 TV Shows</h3>
-                        <p>Binge-worthy series, reality shows, documentaries, and everything television has to offer.</p>
+                        <h3>📺 Programas de TV</h3>
+                        <p>Series dignas de maratón, reality shows, documentales y todo lo que la televisión tiene para ofrecer.</p>
                     </div>
                 </div>
 
-                <!-- Interactive Quiz Section -->
+                <!-- Sección de Próximos Eventos -->
+                <div class="upcoming-events-section">
+                    <h3>📅 Próximos Eventos</h3>
+                    <div class="event-card">
+                        <div class="event-date">25 Jul</div>
+                        <div class="event-details">
+                            <div class="event-title">Concierto de Rock en Vivo: "The Echoes"</div>
+                            <div class="event-description">No te pierdas a The Echoes en su gira de regreso. ¡Entradas ya a la venta!</div>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">10 Ago</div>
+                        <div class="event-details">
+                            <div class="event-title">Festival de Cine Independiente 2025</div>
+                            <div class="event-description">Descubre las próximas obras maestras del cine independiente.</div>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">01 Sep</div>
+                        <div class="event-details">
+                            <div class="event-title">Lanzamiento de "Cyberpunk Saga 2"</div>
+                            <div class="event-description">El esperado juego de rol de acción llega con nuevas misiones y gráficos impresionantes.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Reseñas de Usuarios -->
+                <div class="reviews-section">
+                    <h3>🌟 Lo que Dicen Nuestros Usuarios</h3>
+                    <div class="review-card">
+                        <p>"¡EntertainMe es mi lugar favorito para todo lo relacionado con el entretenimiento! El quiz es muy divertido."</p>
+                        <span class="author">- Alex P.</span>
+                    </div>
+                    <div class="review-card">
+                        <p>"Encontré mi nueva banda indie favorita gracias a sus recomendaciones musicales. ¡Altamente recomendado!"</p>
+                        <span class="author">- Sarah L.</span>
+                    </div>
+                    <div class="review-card">
+                        <p>"La sección de películas siempre está actualizada. ¡Nunca más me perderé un éxito de taquilla!"</p>
+                        <span class="author">- Mike D.</span>
+                    </div>
+                </div>
+
+                <!-- Sección de Categorías por Género -->
+                <div class="categories-section">
+                    <h3>Explorar por Categoría</h3>
+                    <div class="category-grid">
+                        <span class="category-tag" onclick="searchTrending(this)">Acción</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Comedia</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Drama</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Ciencia Ficción</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Terror</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Aventura</span>
+                        <span class="category-tag" onclick="searchTrending(this)">RPG</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Estrategia</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Pop</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Rock</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Hip-Hop</span>
+                        <span class="category-tag" onclick="searchTrending(this)">Clásica</span>
+                    </div>
+                </div>
+
+                <!-- Sección de Quiz Interactivo -->
                 <div class="interactive-section">
                     <div class="quiz-container">
-                        <h3>🧠 Entertainment Quiz</h3>
-                        <div class="quiz-question" id="quizQuestion">Which movie won the Oscar for Best Picture in 2023?</div>
+                        <h3>🧠 Quiz de Entretenimiento</h3>
+                        <div class="quiz-question" id="quizQuestion">¿Qué película ganó el Oscar a Mejor Película en 2023?</div>
                         <div class="quiz-options">
                             <button class="quiz-option" onclick="checkAnswer(this, false)">Top Gun: Maverick</button>
-                            <button class="quiz-option" onclick="checkAnswer(this, true)">Everything Everywhere All at Once</button>
-                            <button class="quiz-option" onclick="checkAnswer(this, false)">The Banshees of Inisherin</button>
-                            <button class="quiz-option" onclick="checkAnswer(this, false)">Avatar: The Way of Water</button>
+                            <button class="quiz-option" onclick="checkAnswer(this, true)">Todo a la vez en todas partes</button>
+                            <button class="quiz-option" onclick="checkAnswer(this, false)">Almas en pena de Inisherin</button>
+                            <button class="quiz-option" onclick="checkAnswer(this, false)">Avatar: El sentido del agua</button>
                         </div>
                         <div id="quizResult" style="margin-top: 1rem; font-weight: bold;"></div>
                     </div>
                 </div>
 
-                <!-- Trending Section -->
+                <!-- Sección de Tendencias -->
                 <div class="trending-section">
-                    <h3>🔥 Trending Now</h3>
+                    <h3>🔥 Tendencias Ahora</h3>
                     <div class="trending-items">
-                        <span class="trending-tag" onclick="searchTrending(this)">#AI Movies</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#Retro Gaming</span>
+                        <span class="trending-tag" onclick="searchTrending(this)">#PelículasIA</span>
+                        <span class="trending-tag" onclick="searchTrending(this)">#JuegosRetro</span>
                         <span class="trending-tag" onclick="searchTrending(this)">#K-Pop</span>
                         <span class="trending-tag" onclick="searchTrending(this)">#Marvel</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#Indie Films</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#Virtual Reality</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#Streaming Wars</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#Viral TikToks</span>
+                        <span class="trending-tag" onclick="searchTrending(this)">#PelículasIndie</span>
+                        <span class="trending-tag" onclick="searchTrending(this)">#RealidadVirtual</span>
+                        <span class="trending-tag" onclick="searchTrending(this)">#GuerrasStreaming</span>
+                        <span class="trending-tag" onclick="searchTrending(this)">#TikToksVirales</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Sidebar with Ads -->
+            <!-- Barra Lateral con Anuncios -->
             <div class="sidebar">
                 <div class="ad-sidebar" onclick="adClick('sidebar1')">
-                    <h4>🎧 Premium Headphones</h4>
-                    <p>Experience crystal clear audio</p>
-                    <small>Save 40% Today!</small>
+                    <h4>🎧 Auriculares Premium</h4>
+                    <p>Experimenta un audio nítido</p>
+                    <small>¡Ahorra 40% Hoy!</small>
                 </div>
 
                 <div class="ad-sidebar" onclick="adClick('sidebar2')">
-                    <h4>📱 Latest Gaming Phone</h4>
-                    <p>Ultimate mobile gaming experience</p>
-                    <small>Pre-order Now</small>
+                    <h4>📱 Último Teléfono Gaming</h4>
+                    <p>La mejor experiencia de juego móvil</p>
+                    <small>Reserva Ahora</small>
+                </div>
+
+                <!-- Espacio para Anuncios LKVueBlocks (Sidebar) -->
+                <div id="lkvueblocks-ad-sidebar" class="ad-sidebar" style="min-height: 150px; background: #f0f0f0; color: #555; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed #ccc;">
+                    <!-- Los anuncios LKVueBlocks se cargarán aquí -->
+                    <h4>Espacio Publicitario</h4>
+                    <p>Anuncios relevantes para ti</p>
                 </div>
 
                 <div class="ad-sidebar" onclick="adClick('sidebar3')">
-                    <h4>🍿 Movie Night Snacks</h4>
-                    <p>Gourmet popcorn delivered</p>
-                    <small>Free Shipping</small>
+                    <h4>🍿 Snacks para Noches de Cine</h4>
+                    <p>Palomitas gourmet a domicilio</p>
+                    <small>Envío Gratis</small>
                 </div>
 
                 <div class="ad-sidebar" onclick="adClick('sidebar4')">
-                    <h4>🎬 Film School Online</h4>
-                    <p>Learn from industry professionals</p>
-                    <small>Free Trial Available</small>
+                    <h4>🎬 Escuela de Cine Online</h4>
+                    <p>Aprende de profesionales de la industria</p>
+                    <small>Prueba Gratuita Disponible</small>
                 </div>
 
                 <div class="ad-sidebar" onclick="adClick('sidebar5')">
-                    <h4>🎮 Gaming Chair Pro</h4>
-                    <p>Comfort meets performance</p>
-                    <small>Limited Time Offer</small>
+                    <h4>🎮 Silla Gaming Pro</h4>
+                    <p>Comodidad y rendimiento se unen</p>
+                    <small>Oferta por Tiempo Limitado</small>
                 </div>
             </div>
         </div>
 
-        <!-- Newsletter Signup -->
+        <!-- Suscripción a Boletín -->
         <div class="newsletter">
-            <h3>Stay Updated!</h3>
-            <p>Get the latest entertainment news, reviews, and exclusive content delivered to your inbox.</p>
+            <h3>¡Mantente Actualizado!</h3>
+            <p>Recibe las últimas noticias de entretenimiento, reseñas y contenido exclusivo directamente en tu bandeja de entrada.</p>
             <div class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" id="emailInput">
-                <button class="newsletter-button" onclick="subscribe()">Subscribe</button>
+                <input type="email" class="newsletter-input" placeholder="Introduce tu dirección de correo electrónico" id="emailInput">
+                <button class="newsletter-button" onclick="subscribe()">Suscribirse</button>
             </div>
         </div>
 
-        <!-- Bottom Ad Banner -->
+        <!-- Banner de Anuncio Inferior -->
         <div class="ad-banner" onclick="adClick('bottom')">
-            🎵 Unlimited Music Streaming - Try 3 Months Free! Join Millions of Happy Listeners! 🎵
+            🎵 ¡Streaming de Música Ilimitado - Prueba 3 Meses Gratis! ¡Únete a Millones de Oyentes Felices! 🎵
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Sección de Pie de Página -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 EntertainMe. All rights reserved. | Privacy Policy | Terms of Service</p>
-            <p>Monetized through strategic ad placements and affiliate partnerships</p>
+            <p>&copy; 2025 EntertainMe. Todos los derechos reservados. | Política de Privacidad | Términos de Servicio</p>
+            <p>Monetizado a través de ubicaciones de anuncios estratégicas y asociaciones de afiliados</p>
         </div>
     </footer>
 
-    <!-- Custom Modal Structure -->
+    <!-- Estructura de Modal Personalizado -->
     <div id="customModal" class="modal-overlay">
         <div class="modal-content">
             <h3 id="modalTitle"></h3>
             <p id="modalMessage"></p>
-            <button class="modal-close-button" onclick="hideModal()">Close</button>
+            <button class="modal-close-button" onclick="hideModal()">Cerrar</button>
         </div>
     </div>
 
-    <!-- Loading Indicator Structure (Currently hidden, for future use) -->
+    <!-- Estructura del Indicador de Carga (Actualmente oculto, para uso futuro) -->
     <div id="loadingIndicator" class="loading-indicator">
         <div class="spinner"></div>
     </div>
 
     <script>
-        // Global variables for tracking engagement metrics
+        // Variables globales para el seguimiento de métricas de participación
         let adClicks = 0;
-        let pageViews = 1; // Initialize with 1 for the initial page load
+        let pageViews = 1; // Inicializar con 1 para la carga inicial de la página
         let userEngagement = 0;
 
-        // --- Custom Modal Functions ---
+        // --- Funciones de Modal Personalizado ---
 
         /**
-         * Displays a custom modal with a given title and message.
-         * @param {string} title - The title of the modal.
-         * @param {string} message - The message content of the modal.
-         * @param {string} [type='info'] - Optional type ('success', 'error', 'info') for styling.
+         * Muestra un modal personalizado con un título y mensaje dados.
+         * @param {string} title - El título del modal.
+         * @param {string} message - El contenido del mensaje del modal.
+         * @param {string} [type='info'] - Tipo opcional ('success', 'error', 'info') para el estilo.
          */
         function showModal(title, message, type = 'info') {
             const modalOverlay = document.getElementById('customModal');
@@ -771,193 +1045,193 @@
             const modalTitle = document.getElementById('modalTitle');
             const modalMessage = document.getElementById('modalMessage');
 
-            // Set modal content
+            // Establecer el contenido del modal
             modalTitle.textContent = title;
             modalMessage.textContent = message;
 
-            // Apply type-specific styling
-            modalContent.className = 'modal-content'; // Reset classes
+            // Aplicar estilo específico del tipo
+            modalContent.className = 'modal-content'; // Reiniciar clases
             modalContent.classList.add(type);
 
-            // Show the modal
+            // Mostrar el modal
             modalOverlay.classList.add('active');
         }
 
         /**
-         * Hides the custom modal.
+         * Oculta el modal personalizado.
          */
         function hideModal() {
             const modalOverlay = document.getElementById('customModal');
             modalOverlay.classList.remove('active');
         }
 
-        // --- Loading Indicator Functions ---
+        // --- Funciones del Indicador de Carga ---
 
         /**
-         * Shows the loading indicator.
+         * Muestra el indicador de carga.
          */
         function showLoading() {
             document.getElementById('loadingIndicator').classList.add('active');
         }
 
         /**
-         * Hides the loading indicator.
+         * Oculta el indicador de carga.
          */
         function hideLoading() {
             document.getElementById('loadingIndicator').classList.remove('active');
         }
 
-        // --- Core Website Functions ---
+        // --- Funciones Principales del Sitio Web ---
 
         /**
-         * Handles ad clicks, updates engagement metrics, and simulates an ad redirect.
-         * Uses the custom modal instead of alert().
-         * @param {string} adType - The type of ad clicked (e.g., 'banner', 'sidebar1').
+         * Maneja los clics en los anuncios, actualiza las métricas de participación y simula una redirección de anuncio.
+         * Utiliza el modal personalizado en lugar de alert().
+         * @param {string} adType - El tipo de anuncio clicado (por ejemplo, 'banner', 'sidebar1').
          */
         function adClick(adType) {
             adClicks++;
             userEngagement += 10;
             updateStats();
             
-            // Simulate revenue generation
+            // Simular la generación de ingresos
             const revenue = (Math.random() * 2 + 0.5).toFixed(2);
-            showModal('Ad Clicked!', `You clicked on an ad of type: ${adType}.\nThis would typically redirect you to the advertiser's website.\nSimulated revenue generated: $${revenue}`, 'info');
+            showModal('¡Anuncio Clicado!', `Hiciste clic en un anuncio de tipo: ${adType}.\nEsto normalmente te redirigiría al sitio web del anunciante.\nIngresos simulados generados: $${revenue}`, 'info');
         }
 
         /**
-         * Displays content specific to the selected entertainment type.
-         * Uses the custom modal instead of alert().
-         * @param {string} type - The type of content to show (e.g., 'movies', 'games').
+         * Muestra el contenido específico del tipo de entretenimiento seleccionado.
+         * Utiliza el modal personalizado en lugar de alert().
+         * @param {string} type - El tipo de contenido a mostrar (por ejemplo, 'movies', 'games').
          */
         function showContent(type) {
             userEngagement += 5;
             updateStats();
             
             const contentTypes = {
-                movies: "🎬 Latest Movies: Blockbusters, Indies, and Critics' Picks await you!",
-                games: "🎮 Gaming Central: Reviews, walkthroughs, and the hottest releases!",
-                music: "🎵 Music Discovery: New albums, trending artists, and playlist recommendations!",
-                tv: "📺 TV Shows: Binge-worthy series and must-watch documentaries!"
+                movies: "🎬 Últimas Películas: ¡Éxitos de taquilla, independientes y favoritos de la crítica te esperan!",
+                games: "🎮 Central de Juegos: ¡Reseñas, guías y los lanzamientos más populares!",
+                music: "🎵 Descubrimiento de Música: ¡Nuevos álbumes, artistas en tendencia y recomendaciones de listas de reproducción!",
+                tv: "📺 Programas de TV: ¡Series dignas de maratón y documentales imprescindibles!"
             };
             
-            showModal(`Exploring ${type.charAt(0).toUpperCase() + type.slice(1)}`, contentTypes[type] || "Content loading...", 'info');
+            showModal(`Explorando ${type.charAt(0).toUpperCase() + type.slice(1)}`, contentTypes[type] || "Cargando contenido...", 'info');
         }
 
         /**
-         * Checks the answer for the current quiz question, updates UI, and provides feedback.
-         * Uses the custom modal for feedback instead of alert().
-         * @param {HTMLElement} button - The button element that was clicked.
-         * @param {boolean} isCorrect - True if the selected answer is correct, false otherwise.
+         * Comprueba la respuesta para la pregunta actual del quiz, actualiza la interfaz de usuario y proporciona retroalimentación.
+         * Utiliza el modal personalizado para la retroalimentación en lugar de alert().
+         * @param {HTMLElement} button - El elemento del botón que fue clicado.
+         * @param {boolean} isCorrect - Verdadero si la respuesta seleccionada es correcta, falso en caso contrario.
          */
         function checkAnswer(button, isCorrect) {
             const resultElement = document.getElementById('quizResult');
             const options = document.querySelectorAll('.quiz-option');
             
-            // Disable all options to prevent multiple selections
+            // Deshabilitar todas las opciones para evitar selecciones múltiples
             options.forEach(option => option.disabled = true);
             
             if (isCorrect) {
                 button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
-                resultElement.innerHTML = '🎉 Correct! "Everything Everywhere All at Once" won Best Picture!';
+                resultElement.innerHTML = '🎉 ¡Correcto! "Todo a la vez en todas partes" ganó Mejor Película!';
                 resultElement.style.color = '#4CAF50';
                 userEngagement += 15;
-                showModal('Quiz Result', '🎉 Correct! You got it right!', 'success');
+                showModal('Resultado del Quiz', '🎉 ¡Correcto! ¡Lo acertaste!', 'success');
             } else {
                 button.style.background = 'linear-gradient(45deg, #f44336, #da190b)';
-                resultElement.innerHTML = '❌ Not quite! The correct answer is "Everything Everywhere All at Once"';
+                resultElement.innerHTML = '❌ ¡No del todo! La respuesta correcta es "Todo a la vez en todas partes"';
                 resultElement.style.color = '#f44336';
                 userEngagement += 5;
-                showModal('Quiz Result', '❌ Incorrect! Try again next time.', 'error');
+                showModal('Resultado del Quiz', '❌ ¡Incorrecto! Inténtalo de nuevo la próxima vez.', 'error');
             }
             
             updateStats();
             
-            // Reset quiz after a short delay
+            // Reiniciar el quiz después de un breve retraso
             setTimeout(() => {
                 options.forEach(option => {
                     option.disabled = false;
                     option.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
                 });
                 resultElement.innerHTML = '';
-                loadNewQuiz(); // Load a new question
+                loadNewQuiz(); // Cargar una nueva pregunta
             }, 3000);
         }
 
         /**
-         * Loads a new random quiz question and updates the quiz interface.
+         * Carga una nueva pregunta de quiz aleatoria y actualiza la interfaz del quiz.
          */
         function loadNewQuiz() {
             const questions = [
                 {
-                    question: "Which streaming service produced 'Stranger Things'?",
+                    question: "¿Qué servicio de streaming produjo 'Stranger Things'?",
                     options: ["Netflix", "Disney+", "HBO Max", "Amazon Prime"],
                     correct: 0
                 },
                 {
-                    question: "What is the highest-grossing movie of all time?",
+                    question: "¿Cuál es la película más taquillera de todos los tiempos?",
                     options: ["Titanic", "Avatar", "Avengers: Endgame", "Star Wars: The Force Awakens"],
                     correct: 1
                 },
                 {
-                    question: "Which video game character is known for collecting rings?",
+                    question: "¿Qué personaje de videojuego es conocido por coleccionar anillos?",
                     options: ["Mario", "Link", "Sonic", "Pac-Man"],
                     correct: 2
                 },
                 {
-                    question: "Who composed the soundtrack for 'The Lion King' (1994 animated film)?",
+                    question: "¿Quién compuso la banda sonora de 'El Rey León' (película animada de 1994)?",
                     options: ["Hans Zimmer", "John Williams", "Ennio Morricone", "Alan Menken"],
                     correct: 0
                 },
                 {
-                    question: "Which band released the album 'Dark Side of the Moon'?",
+                    question: "¿Qué banda lanzó el álbum 'The Dark Side of the Moon'?",
                     options: ["Led Zeppelin", "The Beatles", "Pink Floyd", "Queen"],
                     correct: 2
                 }
             ];
             
-            // Select a random question
+            // Seleccionar una pregunta aleatoria
             const randomQ = questions[Math.floor(Math.random() * questions.length)];
             document.getElementById('quizQuestion').textContent = randomQ.question;
             
             const options = document.querySelectorAll('.quiz-option');
             options.forEach((option, index) => {
                 option.textContent = randomQ.options[index];
-                // Update the click handler to pass the correct answer index
+                // Actualizar el manejador de clics para pasar el índice de la respuesta correcta
                 option.onclick = () => checkAnswer(option, index === randomQ.correct);
             });
         }
 
         /**
-         * Simulates a search based on the clicked trending tag.
-         * Uses the custom modal instead of alert().
-         * @param {HTMLElement} tag - The trending tag element that was clicked.
+         * Simula una búsqueda basada en la etiqueta de tendencia o categoría clicada.
+         * Utiliza el modal personalizado en lugar de alert().
+         * @param {HTMLElement} tag - El elemento de etiqueta de tendencia o categoría que fue clicado.
          */
         function searchTrending(tag) {
             userEngagement += 3;
             updateStats();
-            showModal('Trending Search', `Searching for "${tag.textContent}"...\nThis would show related content and articles!`, 'info');
+            showModal('Búsqueda de Tendencias', `Buscando "${tag.textContent}"...\n¡Esto mostraría contenido y artículos relacionados!`, 'info');
         }
 
         /**
-         * Handles newsletter subscription, validates email, and provides feedback.
-         * Uses the custom modal instead of alert().
+         * Maneja la suscripción al boletín, valida el correo electrónico y proporciona retroalimentación.
+         * Utiliza el modal personalizado en lugar de alert().
          */
         function subscribe() {
             const emailInput = document.getElementById('emailInput');
             const email = emailInput.value;
 
-            if (email && email.includes('@') && email.includes('.')) { // Basic email validation
+            if (email && email.includes('@') && email.includes('.')) { // Validación básica de correo electrónico
                 userEngagement += 20;
                 updateStats();
-                showModal('Subscription Successful!', `Thanks for subscribing with ${email}!\nYou'll receive our entertainment newsletter weekly.`, 'success');
-                emailInput.value = ''; // Clear the input field
+                showModal('¡Suscripción Exitosa!', `¡Gracias por suscribirte con ${email}!\nRecibirás nuestro boletín de entretenimiento semanalmente.`, 'success');
+                emailInput.value = ''; // Limpiar el campo de entrada
             } else {
-                showModal('Subscription Failed', 'Please enter a valid email address.', 'error');
+                showModal('Suscripción Fallida', 'Por favor, introduce una dirección de correo electrónico válida.', 'error');
             }
         }
 
         /**
-         * Smoothly scrolls the viewport to the main content area.
+         * Desplaza suavemente la ventana gráfica al área de contenido principal.
          */
         function scrollToContent() {
             document.querySelector('.main-content').scrollIntoView({ 
@@ -968,76 +1242,76 @@
         }
 
         /**
-         * Updates and logs the current engagement statistics.
-         * Also updates the page title to reflect engagement and simulated revenue.
+         * Actualiza y registra las estadísticas de participación actuales.
+         * También actualiza el título de la página para reflejar la participación y los ingresos simulados.
          */
         function updateStats() {
-            console.log(`Page Views: ${pageViews} | Ad Clicks: ${adClicks} | Engagement Score: ${userEngagement}`);
+            console.log(`Vistas de Página: ${pageViews} | Clics en Anuncios: ${adClicks} | Puntuación de Participación: ${userEngagement}`);
             
-            // Update page title with engagement metrics
-            document.title = `EntertainMe - Engagement: ${userEngagement} | Ad Revenue: $${(adClicks * 1.25).toFixed(2)}`;
+            // Actualizar el título de la página con métricas de participación
+            document.title = `EntertainMe - Participación: ${userEngagement} | Ingresos por Anuncios: $${(adClicks * 1.25).toFixed(2)}`;
         }
 
         /**
-         * Tracks a page view, incrementing the pageViews counter.
+         * Rastrea una vista de página, incrementando el contador de pageViews.
          */
         function trackPageView() {
             pageViews++;
-            console.log('Page view tracked:', pageViews);
+            console.log('Vista de página rastreada:', pageViews);
         }
 
         /**
-         * Rotates the visual emphasis on trending tags to simulate activity.
+         * Rota el énfasis visual en las etiquetas de tendencia para simular actividad.
          */
         function rotateTrending() {
             const tags = document.querySelectorAll('.trending-tag');
             let currentIndex = 0;
             
             setInterval(() => {
-                // Remove highlight from previous tag
+                // Eliminar el resaltado de la etiqueta anterior
                 tags.forEach(tag => tag.style.transform = 'scale(1)');
-                // Highlight current tag
+                // Resaltar la etiqueta actual
                 tags[currentIndex].style.transform = 'scale(1.1)';
-                // Move to next tag
+                // Pasar a la siguiente etiqueta
                 currentIndex = (currentIndex + 1) % tags.length;
-            }, 2000); // Change tag every 2 seconds
+            }, 2000); // Cambiar de etiqueta cada 2 segundos
         }
 
-        // --- Event Listeners and Initialization ---
+        // --- Oyentes de Eventos e Inicialización ---
 
-        // Ensures that the DOM is fully loaded before running scripts
+        // Asegura que el DOM esté completamente cargado antes de ejecutar los scripts
         document.addEventListener('DOMContentLoaded', function() {
-            trackPageView(); // Track initial page view
-            loadNewQuiz(); // Load the first quiz question
-            rotateTrending(); // Start trending tag rotation
-            updateStats(); // Initial stats update
+            trackPageView(); // Rastrear la vista inicial de la página
+            loadNewQuiz(); // Cargar la primera pregunta del quiz
+            rotateTrending(); // Iniciar la rotación de etiquetas de tendencia
+            updateStats(); // Actualización inicial de estadísticas
             
-            // Simulate continuous user activity for demo purposes
+            // Simular actividad continua del usuario para fines de demostración
             setInterval(() => {
-                userEngagement += 1; // Increment engagement over time
-                if (Math.random() < 0.1) { // 10% chance of simulating an ad impression
-                    console.log('Ad impression recorded');
+                userEngagement += 1; // Incrementar la participación con el tiempo
+                if (Math.random() < 0.1) { // 10% de probabilidad de simular una impresión de anuncio
+                    console.log('Impresión de anuncio registrada');
                 }
-                updateStats(); // Update stats periodically
-            }, 5000); // Every 5 seconds
+                updateStats(); // Actualizar estadísticas periódicamente
+            }, 5000); // Cada 5 segundos
         });
 
-        // Track scroll depth for engagement
-        let maxScroll = 0; // Tracks the maximum scroll percentage reached
+        // Rastrear la profundidad de desplazamiento para la participación
+        let maxScroll = 0; // Rastrea el porcentaje máximo de desplazamiento alcanzado
         window.addEventListener('scroll', () => {
-            // Calculate scroll percentage
+            // Calcular el porcentaje de desplazamiento
             const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
             if (scrollPercent > maxScroll) {
-                maxScroll = scrollPercent; // Update max scroll
-                // Add engagement based on scroll depth (e.g., every 25% scrolled)
+                maxScroll = scrollPercent; // Actualizar el desplazamiento máximo
+                // Añadir participación basada en la profundidad de desplazamiento (por ejemplo, cada 25% desplazado)
                 userEngagement += Math.floor(scrollPercent / 25);
                 updateStats();
             }
         });
     </script>
 
-    <!-- Ad Monetization Scripts - Added for monetization purposes -->
-    <!-- Popunder Script -->
+    <!-- Scripts de Monetización de Anuncios - Añadidos con fines de monetización -->
+    <!-- Script Popunder -->
     <script>
     (function(hyxh){
     var d = document,
@@ -1051,7 +1325,7 @@
     })({})
     </script>
 
-    <!-- MultiTag Banners Script 1 -->
+    <!-- Script de Banners MultiTag 1 -->
     <script>
     (function(cpds){
     var d = document,
@@ -1065,7 +1339,7 @@
     })({})
     </script>
 
-    <!-- MultiTag Banners Script 2 -->
+    <!-- Script de Banners MultiTag 2 -->
     <script>
     (function(vpnez){
     var d = document,
@@ -1079,7 +1353,7 @@
     })({})
     </script>
 
-    <!-- LKVueBlocks.invocTypeMultitagVast Script -->
+    <!-- Script LKVueBlocks.invocTypeMultitagVast -->
     <script>
     (function(lh){
     var d = document,
@@ -1093,11 +1367,11 @@
     })({})
     </script>
 
-    <!-- VAST Ad Script (Direct URL) -->
+    <!-- Script de Anuncio VAST (URL Directa) -->
     <script>
-        // This script directly loads the VAST ad tag.
-        // In a real-world scenario, you might integrate this with a video player
-        // or a more sophisticated ad manager.
+        // Este script carga directamente la etiqueta de anuncio VAST.
+        // En un escenario real, esto podría integrarse con un reproductor de video
+        // o un administrador de anuncios más sofisticado.
         const vastScript = document.createElement('script');
         vastScript.src = "https://mustymix.com/dCmqFQz.dcG/NnvYZtGsUw/zekmZ9ju/ZAU/l-kHPhTkYA1/MOjMc/2QO/DEYpteNSjlUFywNBz_Yq4QNfwf";
         vastScript.async = true;
