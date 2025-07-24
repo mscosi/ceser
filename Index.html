@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EntertainMe - Your Ultimate Entertainment Hub</title>
+    <meta name="description" content="Discover the latest movies, games, music, and entertainment trends. Your ultimate destination for entertainment content.">
+    <meta name="keywords" content="entertainment, movies, games, music, streaming, reviews, trending">
     <style>
-        /* Estilos Globales */
+        /* Global Styles - Enhanced */
         * {
             margin: 0;
             padding: 0;
@@ -13,11 +15,12 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif; /* Fuente cambiada a Inter */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -26,17 +29,23 @@
             padding: 0 20px;
         }
 
-        /* Encabezado */
+        /* Enhanced Header with Animation */
         header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            border-bottom-left-radius: 15px; /* Bordes redondeados */
-            border-bottom-right-radius: 15px; /* Bordes redondeados */
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         nav {
@@ -47,11 +56,17 @@
 
         .logo {
             font-size: 2rem;
-            font-weight: bold;
+            font-weight: 800;
             background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05) rotate(2deg);
         }
 
         .nav-links {
@@ -63,117 +78,205 @@
         .nav-links a {
             text-decoration: none;
             color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 8px 16px;
+            border-radius: 25px;
         }
 
         .nav-links a:hover {
             color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -5px;
-            left: 0;
+            left: 50%;
             width: 0;
-            height: 2px;
-            background: #667eea;
-            transition: width 0.3s ease;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
         }
 
         .nav-links a:hover::after {
-            width: 100%;
+            width: 80%;
         }
 
-        /* Banners de Anuncios */
+        /* Enhanced Ad Banners */
         .ad-banner {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ff9a9e);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite;
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             margin: 20px 0;
-            border-radius: 15px;
+            border-radius: 20px;
             font-weight: bold;
-            box-shadow: 0 8px 32px rgba(255, 154, 158, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 154, 158, 0.4);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .ad-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .ad-banner:hover::before {
+            animation: shimmer 1s ease;
+            opacity: 1;
         }
 
         .ad-banner:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(255, 154, 158, 0.6);
         }
 
         .ad-sidebar {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
             color: #333;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
-            margin: 15px 0;
+            margin: 20px 0;
             cursor: pointer;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .ad-sidebar:hover::before {
+            left: 100%;
         }
 
         .ad-sidebar:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        /* Sección Hero */
+        /* Enhanced Hero Section */
         .hero {
             text-align: center;
-            padding: 4rem 0;
+            padding: 5rem 0;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity=".1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23a)"/></svg>') center/cover;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
             animation: fadeInUp 1s ease;
+            font-weight: 900;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             background: linear-gradient(45deg, #ff6b6b, #ee5a52);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             animation: fadeInUp 1s ease 0.4s both;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.7);
         }
 
-        /* Contenido Principal */
+        .cta-button:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Enhanced Main Content */
         .main-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
+            gap: 3rem;
+            padding: 3rem 0;
         }
 
         .content-area {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .sidebar {
@@ -181,24 +284,25 @@
             flex-direction: column;
         }
 
-        /* Tarjetas de Contenido */
+        /* Enhanced Content Cards */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
         .content-card {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
+            padding: 2rem;
+            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .content-card::before {
@@ -208,330 +312,414 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
             transform: rotate(45deg);
-            transition: all 0.5s ease;
+            transition: all 0.6s ease;
             opacity: 0;
         }
 
         .content-card:hover::before {
-            animation: shimmer 0.8s ease;
+            animation: shimmer 1s ease;
             opacity: 1;
         }
 
         .content-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            transform: translateY(-15px) scale(1.03) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
         }
 
         .content-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
-        /* Sección de Contenido Destacado */
+        .content-card p {
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        /* Enhanced Featured Section */
         .featured-section {
             background: linear-gradient(135deg, #fecfef, #ff9a9e);
             color: #333;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(254, 207, 239, 0.3);
+            padding: 3rem;
+            border-radius: 25px;
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(254, 207, 239, 0.4);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-section::before {
+            content: '✨';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
         }
 
         .featured-section h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: #764ba2;
+            font-weight: 800;
         }
 
         .featured-image {
             width: 100%;
-            max-width: 400px;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-image:hover {
+            transform: scale(1.05);
         }
 
         .featured-description {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 500px;
         }
 
-        /* Sección de Próximos Eventos */
+        /* Enhanced Interactive Sections */
+        .upcoming-events-section,
+        .reviews-section,
+        .categories-section,
+        .interactive-section,
+        .trending-section {
+            padding: 3rem;
+            border-radius: 25px;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .upcoming-events-section:hover,
+        .reviews-section:hover,
+        .categories-section:hover,
+        .interactive-section:hover,
+        .trending-section:hover {
+            transform: translateY(-5px);
+        }
+
         .upcoming-events-section {
             background: linear-gradient(135deg, #d1e0f7, #b2c1ee);
-            color: #333;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(178, 193, 238, 0.3);
+            box-shadow: 0 15px 50px rgba(178, 193, 238, 0.4);
         }
 
-        .upcoming-events-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #4a69bd;
-            text-align: center;
-        }
-
-        .event-card {
-            background: white;
-            padding: 1.2rem;
-            border-radius: 10px;
-            margin-bottom: 0.8rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .event-card .event-date {
-            font-weight: bold;
-            color: #667eea;
-            flex-shrink: 0;
-            width: 80px;
-            text-align: center;
-        }
-
-        .event-card .event-details {
-            flex-grow: 1;
-        }
-
-        .event-card .event-title {
-            font-weight: bold;
-            margin-bottom: 0.2rem;
-            color: #333;
-        }
-
-        .event-card .event-description {
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-
-        /* Sección de Reseñas de Usuarios */
         .reviews-section {
             background: linear-gradient(135deg, #e0f2f7, #c1e4ee);
-            color: #333;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(193, 228, 238, 0.3);
+            box-shadow: 0 15px 50px rgba(193, 228, 238, 0.4);
         }
 
-        .reviews-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #2196F3;
-            text-align: center;
-        }
-
-        .review-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .review-card p {
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .review-card .author {
-            font-weight: bold;
-            text-align: right;
-            display: block;
-            color: #777;
-        }
-
-        /* Sección de Categorías por Género */
         .categories-section {
             background: linear-gradient(135deg, #d1f7e0, #b2eec1);
-            color: #333;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(178, 238, 193, 0.3);
+            box-shadow: 0 15px 50px rgba(178, 238, 193, 0.4);
         }
 
-        .categories-section h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #4CAF50;
-            text-align: center;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .category-tag {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 0.8rem 1.2rem;
-            border-radius: 20px;
-            text-align: center;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .category-tag:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-
-        /* Características Interactivas */
         .interactive-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
 
+        .trending-section {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            box-shadow: 0 15px 50px rgba(255, 154, 158, 0.4);
+            color: white;
+        }
+
+        /* Enhanced Quiz Section */
         .quiz-container {
             text-align: center;
         }
 
         .quiz-question {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
             color: #333;
+            font-weight: 600;
+            padding: 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
         }
 
         .quiz-options {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
         .quiz-option {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .quiz-option:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
         }
 
-        .quiz-option:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
+        /* Enhanced Categories */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
         }
 
-        /* Sección de Tendencias */
-        .trending-section {
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(255, 154, 158, 0.3); /* Sombra añadida */
-        }
-
-        .trending-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .trending-tag {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
+        .category-tag {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem 1.5rem;
             border-radius: 25px;
-            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
 
-        .trending-tag:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
+        .category-tag:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
-        /* Suscripción a Boletín */
+        /* Enhanced Newsletter */
         .newsletter {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 3rem;
+            border-radius: 25px;
             text-align: center;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3); /* Sombra añadida */
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .newsletter h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
         }
 
         .newsletter-form {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 2rem;
             justify-content: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .newsletter-input {
-            padding: 1rem;
+            padding: 1.2rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             flex: 1;
-            max-width: 300px;
             font-size: 1rem;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .newsletter-button {
-            background: #ff6b6b;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             cursor: pointer;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra añadida */
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .newsletter-button:hover {
-            background: #ee5a52;
-            transform: scale(1.05);
+            background: linear-gradient(45deg, #ee5a52, #da190b);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
         }
 
-        /* Pie de página */
+        /* Enhanced Footer */
         footer {
-            background: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
-            margin-top: 2rem;
-            border-top-left-radius: 15px; /* Bordes redondeados */
-            border-top-right-radius: 15px; /* Bordes redondeados */
+            margin-top: 3rem;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            backdrop-filter: blur(10px);
         }
 
-        /* Animaciones */
+        /* Pop-under trigger elements */
+        .popup-trigger {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-trigger:hover {
+            transform: scale(1.02);
+        }
+
+        /* Enhanced Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            transform: translateY(-100px) scale(0.8);
+            opacity: 0;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .modal-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #667eea;
+            font-weight: 800;
+        }
+
+        .modal-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .modal-close-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-close-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 15px;
+            color: white;
+            font-weight: 600;
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #f44336, #da190b);
+        }
+
+        .notification.info {
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+        }
+
+        /* Enhanced Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -544,131 +732,30 @@
             100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
-        /* Estilos de Modal Personalizado */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            transform: translateY(-50px);
-            opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            position: relative;
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .modal-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #667eea;
-        }
-
-        .modal-content p {
-            font-size: 1.1rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .modal-close-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
-        }
-
-        .modal-close-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.5);
-        }
-
-        /* Estilos específicos de tipo de modal */
-        .modal-content.success h3 { color: #4CAF50; }
-        .modal-content.error h3 { color: #f44336; }
-        .modal-content.info h3 { color: #2196F3; }
-
-        /* Indicador de Carga (Marcador de posición para futura generación de imágenes) */
-        .loading-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .loading-indicator.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .spinner {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #667eea;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-        }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-
-        /* Diseño Responsivo */
+        /* Enhanced Responsive Design */
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
             
             .nav-links {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .newsletter-form {
@@ -680,524 +767,579 @@
                 grid-template-columns: 1fr;
             }
 
+            .content-area,
+            .upcoming-events-section,
+            .reviews-section,
+            .categories-section,
+            .interactive-section,
+            .trending-section,
+            .newsletter,
+            .featured-section {
+                padding: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
             .logo {
                 font-size: 1.5rem;
             }
 
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav-links li {
-                margin-bottom: 5px;
-            }
-
-            .hero {
-                padding: 2rem 0;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .cta-button {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-
-            .content-area, .interactive-section, .trending-section, .newsletter, .featured-section, .reviews-section, .categories-section, .upcoming-events-section {
-                padding: 1.5rem;
-            }
-
-            .content-card {
-                padding: 1rem;
-            }
-
-            .content-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .quiz-question {
-                font-size: 1rem;
-            }
-
-            .quiz-option {
-                padding: 0.8rem;
+            .nav-links a {
+                padding: 6px 12px;
                 font-size: 0.9rem;
             }
+        }
 
-            .newsletter-input {
-                padding: 0.8rem;
-                font-size: 0.9rem;
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
+        }
 
-            .newsletter-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .ad-banner {
-                padding: 15px;
-                font-size: 0.9rem;
-            }
-
-            .ad-sidebar {
-                padding: 10px;
-            }
-
-            .ad-sidebar h4 {
-                font-size: 1rem;
-            }
-
-            .ad-sidebar p, .ad-sidebar small {
-                font-size: 0.8rem;
-            }
-
-            .featured-section h3, .reviews-section h3, .categories-section h3, .upcoming-events-section h3 {
-                font-size: 1.5rem;
-            }
-
-            .featured-description {
-                font-size: 1rem;
-            }
-
-            .review-card p {
-                font-size: 0.9rem;
-            }
-
-            .category-tag {
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            .event-card {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-
-            .event-card .event-date {
-                width: auto;
-                text-align: left;
-            }
+        /* Focus states for accessibility */
+        button:focus,
+        .nav-links a:focus,
+        .newsletter-input:focus {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <!-- Sección de Encabezado -->
+    <!-- Enhanced Header -->
     <header>
         <nav class="container">
-            <div class="logo">EntertainMe</div>
+            <div class="logo popup-trigger" onclick="triggerPopunder('logo')">EntertainMe</div>
             <ul class="nav-links">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#movies">Películas</a></li>
-                <li><a href="#games">Juegos</a></li>
-                <li><a href="#music">Música</a></li>
-                <li><a href="#trending">Tendencias</a></li>
+                <li><a href="#home" class="popup-trigger" onclick="triggerPopunder('nav-home')">Inicio</a></li>
+                <li><a href="#movies" class="popup-trigger" onclick="triggerPopunder('nav-movies')">Películas</a></li>
+                <li><a href="#games" class="popup-trigger" onclick="triggerPopunder('nav-games')">Juegos</a></li>
+                <li><a href="#music" class="popup-trigger" onclick="triggerPopunder('nav-music')">Música</a></li>
+                <li><a href="#trending" class="popup-trigger" onclick="triggerPopunder('nav-trending')">Tendencias</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
-        <!-- Sección Hero -->
+        <!-- Enhanced Hero Section -->
         <section class="hero">
             <h1>Bienvenido a EntertainMe</h1>
-            <p>Tu destino definitivo para películas, juegos, música y entretenimiento sin fin</p>
-            <button class="cta-button" onclick="scrollToContent()">Explorar Ahora</button>
+            <p>Tu destino definitivo para películas, juegos, música y entretenimiento sin fin. Descubre, explora y disfruta del mejor contenido de entretenimiento.</p>
+            <button class="cta-button popup-trigger" onclick="scrollToContent(); triggerPopunder('cta-hero')">Explorar Ahora</button>
         </section>
 
-        <!-- Banner de Anuncio Superior -->
-        <div class="ad-banner" onclick="adClick('banner')">
+        <!-- Enhanced Ad Banners -->
+        <div class="ad-banner popup-trigger" onclick="adClick('banner-top'); triggerPopunder('banner-top')">
             🎬 ¡Streaming de Películas Premium - 30% de Descuento Solo Hoy! ¡Haz Clic Aquí para Ofertas Increíbles! 🎬
         </div>
 
-        <!-- Área de Contenido Principal -->
+        <!-- Main Content Area -->
         <div class="main-content">
             <div class="content-area">
-                <!-- Sección de Contenido Destacado -->
+                <!-- Enhanced Featured Section -->
                 <div class="featured-section">
                     <h3>✨ Destacado Esta Semana: "Odisea Cósmica"</h3>
-                    <img src="https://placehold.co/400x250/667eea/ffffff?text=Odisea+Cosmica" alt="Póster de la Película Odisea Cósmica" class="featured-image">
-                    <p class="featured-description">Embárcate en un viaje épico a través de las estrellas en esta impresionante aventura de ciencia ficción. ¡Imágenes asombrosas y una historia apasionante hacen de "Odisea Cósmica" una visita obligada!</p>
-                    <button class="cta-button" onclick="showContent('movies')">Ver Ahora</button>
+                    <img src="https://placehold.co/450x280/667eea/ffffff?text=Odisea+Cosmica" alt="Póster de la Película Odisea Cósmica" class="featured-image popup-trigger" onclick="triggerPopunder('featured-image')">
+                    <p class="featured-description">Embárcate en un viaje épico a través de las estrellas en esta impresionante aventura de ciencia ficción. Con efectos visuales revolucionarios y una narrativa envolvente, "Odisea Cósmica" redefine el género espacial.</p>
+                    <button class="cta-button popup-trigger" onclick="showContent('movies'); triggerPopunder('featured-cta')">Ver Ahora</button>
                 </div>
 
-                <!-- Espacio para Anuncios MultiTag (Contenido - 1) -->
-                <div id="multitag-ad-content-1" class="ad-banner" style="min-height: 100px; background: #f0f0f0; color: #555; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc; margin-top: 2rem;">
-                    <p>Espacio Publicitario MultiTag</p>
+                <!-- MultiTag Ad Space 1 -->
+                <div id="multitag-ad-content-1" class="ad-banner popup-trigger" style="min-height: 120px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); color: #555; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; margin: 2rem 0; border-radius: 15px;" onclick="triggerPopunder('multitag-1')">
+                    <div style="text-align: center;">
+                        <h4>🎯 Espacio Publicitario MultiTag</h4>
+                        <p>Anuncios relevantes aparecerán aquí</p>
+                    </div>
                 </div>
 
-                <h2>Último Entretenimiento</h2>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #333; font-weight: 800; text-align: center;">Último Entretenimiento</h2>
                 
                 <div class="content-grid">
-                    <div class="content-card" onclick="showContent('movies')">
+                    <div class="content-card popup-trigger" onclick="showContent('movies'); triggerPopunder('movies-card')">
                         <h3>🎬 Películas de Éxito</h3>
-                        <p>Descubre los últimos éxitos de taquilla, películas independientes y clásicos atemporales. Desde aventuras llenas de acción hasta dramas conmovedores.</p>
+                        <p>Descubre los últimos éxitos de taquilla, películas independientes y clásicos atemporales. Desde aventuras llenas de acción hasta dramas conmovedores que te mantendrán al borde de tu asiento.</p>
                     </div>
                     
-                    <div class="content-card" onclick="showContent('games')">
+                    <div class="content-card popup-trigger" onclick="showContent('games'); triggerPopunder('games-card')">
                         <h3>🎮 Zona de Juegos</h3>
-                        <p>Sumérgete en el mundo de los videojuegos con reseñas, guías y los últimos lanzamientos en todas las plataformas.</p>
+                        <p>Sumérgete en el mundo de los videojuegos con reseñas detalladas, guías completas y los últimos lanzamientos en todas las plataformas de gaming.</p>
                     </div>
                     
-                    <div class="content-card" onclick="showContent('music')">
+                    <div class="content-card popup-trigger" onclick="showContent('music'); triggerPopunder('music-card')">
                         <h3>🎵 Centro de Música</h3>
-                        <p>Explora nuevos artistas, éxitos de las listas y joyas ocultas de todos los géneros. Tu viaje musical comienza aquí.</p>
+                        <p>Explora nuevos artistas emergentes, éxitos de las listas y joyas ocultas de todos los géneros. Tu viaje musical definitivo comienza aquí.</p>
                     </div>
                     
-                    <div class="content-card" onclick="showContent('tv')">
+                    <div class="content-card popup-trigger" onclick="showContent('tv'); triggerPopunder('tv-card')">
                         <h3>📺 Programas de TV</h3>
-                        <p>Series dignas de maratón, reality shows, documentales y todo lo que la televisión tiene para ofrecer.</p>
+                        <p>Series dignas de maratón, reality shows emocionantes, documentales fascinantes y todo lo que la televisión moderna tiene para ofrecer.</p>
                     </div>
                 </div>
 
-                <!-- Espacio para Anuncios LKVueBlocks (Contenido - 1) -->
-                <div id="lkvueblocks-ad-content-1" class="ad-banner" style="min-height: 120px; background: #e6e6fa; color: #555; display: flex; align-items: center; justify-content: center; border: 1px dashed #d1c4e9; margin-top: 2rem;">
-                    <p>Espacio Publicitario LKVueBlocks</p>
+                <!-- LKVueBlocks Ad Space 1 -->
+                <div id="lkvueblocks-ad-content-1" class="ad-banner popup-trigger" style="min-height: 140px; background: linear-gradient(135deg, #e6e6fa, #d1c4e9); color: #555; display: flex; align-items: center; justify-content: center; border: 2px dashed #d1c4e9; margin: 2rem 0; border-radius: 15px;" onclick="triggerPopunder('lkvue-1')">
+                    <div style="text-align: center;">
+                        <h4>📺 Espacio Publicitario LKVueBlocks</h4>
+                        <p>Contenido publicitario premium</p>
+                        <small>Haz clic para más información</small>
+                    </div>
                 </div>
 
-                <!-- Sección de Próximos Eventos -->
+                <!-- Enhanced Upcoming Events Section -->
                 <div class="upcoming-events-section">
-                    <h3>📅 Próximos Eventos</h3>
-                    <div class="event-card">
+                    <h3>📅 Próximos Eventos de Entretenimiento</h3>
+                    <div class="event-card popup-trigger" onclick="triggerPopunder('event-1')">
                         <div class="event-date">25 Jul</div>
                         <div class="event-details">
-                            <div class="event-title">Concierto de Rock en Vivo: "The Echoes"</div>
-                            <div class="event-description">No te pierdas a The Echoes en su gira de regreso. ¡Entradas ya a la venta!</div>
+                            <div class="event-title">🎸 Concierto de Rock en Vivo: "The Echoes"</div>
+                            <div class="event-description">No te pierdas a The Echoes en su gira mundial de regreso. Una experiencia musical única con efectos visuales espectaculares. ¡Entradas limitadas ya a la venta!</div>
                         </div>
                     </div>
-                    <div class="event-card">
+                    <div class="event-card popup-trigger" onclick="triggerPopunder('event-2')">
                         <div class="event-date">10 Ago</div>
                         <div class="event-details">
-                            <div class="event-title">Festival de Cine Independiente 2025</div>
-                            <div class="event-description">Descubre las próximas obras maestras del cine independiente.</div>
+                            <div class="event-title">🎭 Festival de Cine Independiente 2025</div>
+                            <div class="event-description">Descubre las próximas obras maestras del cine independiente. Más de 100 películas de directores emergentes de todo el mundo.</div>
                         </div>
                     </div>
-                    <div class="event-card">
+                    <div class="event-card popup-trigger" onclick="triggerPopunder('event-3')">
                         <div class="event-date">01 Sep</div>
                         <div class="event-details">
-                            <div class="event-title">Lanzamiento de "Cyberpunk Saga 2"</div>
-                            <div class="event-description">El esperado juego de rol de acción llega con nuevas misiones y gráficos impresionantes.</div>
+                            <div class="event-title">🚀 Lanzamiento de "Cyberpunk Saga 2"</div>
+                            <div class="event-description">El esperado juego de rol de acción llega con nuevas misiones épicas, gráficos ultra-realistas y un mundo abierto revolucionario.</div>
+                        </div>
+                    </div>
+                    <div class="event-card popup-trigger" onclick="triggerPopunder('event-4')">
+                        <div class="event-date">15 Sep</div>
+                        <div class="event-details">
+                            <div class="event-title">🎪 Gran Festival de Entretenimiento Digital</div>
+                            <div class="event-description">Celebración de streamers, gamers y creadores de contenido. Competencias, premios y encuentros con tus influencers favoritos.</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Espacio para Anuncios MultiTag (Contenido - 2) -->
-                <div id="multitag-ad-content-2" class="ad-banner" style="min-height: 100px; background: #f0f0f0; color: #555; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc; margin-top: 2rem;">
-                    <p>Espacio Publicitario MultiTag</p>
+                <!-- MultiTag Ad Space 2 -->
+                <div id="multitag-ad-content-2" class="ad-banner popup-trigger" style="min-height: 120px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); color: #555; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc; margin: 2rem 0; border-radius: 15px;" onclick="triggerPopunder('multitag-2')">
+                    <div style="text-align: center;">
+                        <h4>🎯 Espacio Publicitario MultiTag #2</h4>
+                        <p>Más anuncios personalizados para ti</p>
+                    </div>
                 </div>
 
-                <!-- Sección de Reseñas de Usuarios -->
+                <!-- Enhanced User Reviews Section -->
                 <div class="reviews-section">
                     <h3>🌟 Lo que Dicen Nuestros Usuarios</h3>
-                    <div class="review-card">
-                        <p>"¡EntertainMe es mi lugar favorito para todo lo relacionado con el entretenimiento! El quiz es muy divertido."</p>
-                        <span class="author">- Alex P.</span>
+                    <div class="review-card popup-trigger" onclick="triggerPopunder('review-1')">
+                        <p>"¡EntertainMe es mi lugar favorito para todo lo relacionado con el entretenimiento! El quiz interactivo es súper divertido y siempre descubro contenido nuevo."</p>
+                        <span class="author">- Alex P. ⭐⭐⭐⭐⭐</span>
                     </div>
-                    <div class="review-card">
-                        <p>"Encontré mi nueva banda indie favorita gracias a sus recomendaciones musicales. ¡Altamente recomendado!"</p>
-                        <span class="author">- Sarah L.</span>
+                    <div class="review-card popup-trigger" onclick="triggerPopunder('review-2')">
+                        <p>"Encontré mi nueva banda indie favorita gracias a sus recomendaciones musicales personalizadas. ¡La sección de música es increíble! Altamente recomendado."</p>
+                        <span class="author">- Sarah L. ⭐⭐⭐⭐⭐</span>
                     </div>
-                    <div class="review-card">
-                        <p>"La sección de películas siempre está actualizada. ¡Nunca más me perderé un éxito de taquilla!"</p>
-                        <span class="author">- Mike D.</span>
+                    <div class="review-card popup-trigger" onclick="triggerPopunder('review-3')">
+                        <p>"La sección de películas siempre está actualizada con los últimos estrenos. ¡Nunca más me perderé un éxito de taquilla! Las reseñas son muy útiles."</p>
+                        <span class="author">- Mike D. ⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="review-card popup-trigger" onclick="triggerPopunder('review-4')">
+                        <p>"Como gamer, aprecio mucho las guías detalladas y las reseñas honestas de juegos. Me ha ahorrado mucho dinero en compras inteligentes."</p>
+                        <span class="author">- Gaming_Pro21 ⭐⭐⭐⭐⭐</span>
                     </div>
                 </div>
 
-                <!-- Espacio para Anuncios LKVueBlocks (Contenido - 2) -->
-                <div id="lkvueblocks-ad-content-2" class="ad-banner" style="min-height: 120px; background: #e6e6fa; color: #555; display: flex; align-items: center; justify-content: center; border: 1px dashed #d1c4e9; margin-top: 2rem;">
-                    <p>Espacio Publicitario LKVueBlocks</p>
+                <!-- LKVueBlocks Ad Space 2 -->
+                <div id="lkvueblocks-ad-content-2" class="ad-banner popup-trigger" style="min-height: 140px; background: linear-gradient(135deg, #e6e6fa, #d1c4e9); color: #555; display: flex; align-items: center; justify-content: center; border: 2px dashed #d1c4e9; margin: 2rem 0; border-radius: 15px;" onclick="triggerPopunder('lkvue-2')">
+                    <div style="text-align: center;">
+                        <h4>📺 Espacio Publicitario LKVueBlocks #2</h4>
+                        <p>Anuncios premium y relevantes</p>
+                        <small>Contenido patrocinado de calidad</small>
+                    </div>
                 </div>
 
-                <!-- Sección de Categorías por Género -->
+                <!-- Enhanced Categories Section -->
                 <div class="categories-section">
-                    <h3>Explorar por Categoría</h3>
+                    <h3>🎯 Explorar por Categoría</h3>
                     <div class="category-grid">
-                        <span class="category-tag" onclick="searchTrending(this)">Acción</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Comedia</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Drama</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Ciencia Ficción</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Terror</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Aventura</span>
-                        <span class="category-tag" onclick="searchTrending(this)">RPG</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Estrategia</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Pop</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Rock</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Hip-Hop</span>
-                        <span class="category-tag" onclick="searchTrending(this)">Clásica</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-action')">🎬 Acción</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-comedy')">😂 Comedia</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-drama')">🎭 Drama</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-sci-fi')">🚀 Ciencia Ficción</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-horror')">👻 Terror</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-adventure')">🗺️ Aventura</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-rpg')">⚔️ RPG</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-strategy')">🧠 Estrategia</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-pop')">🎵 Pop</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-rock')">🎸 Rock</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-hip-hop')">🎤 Hip-Hop</span>
+                        <span class="category-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('cat-classical')">🎼 Clásica</span>
                     </div>
                 </div>
 
-                <!-- Sección de Quiz Interactivo -->
+                <!-- Enhanced Interactive Quiz Section -->
                 <div class="interactive-section">
                     <div class="quiz-container">
-                        <h3>🧠 Quiz de Entretenimiento</h3>
+                        <h3>🧠 Quiz de Entretenimiento Interactivo</h3>
                         <div class="quiz-question" id="quizQuestion">¿Qué película ganó el Oscar a Mejor Película en 2023?</div>
                         <div class="quiz-options">
-                            <button class="quiz-option" onclick="checkAnswer(this, false)">Top Gun: Maverick</button>
-                            <button class="quiz-option" onclick="checkAnswer(this, true)">Todo a la vez en todas partes</button>
-                            <button class="quiz-option" onclick="checkAnswer(this, false)">Almas en pena de Inisherin</button>
-                            <button class="quiz-option" onclick="checkAnswer(this, false)">Avatar: El sentido del agua</button>
+                            <button class="quiz-option popup-trigger" onclick="checkAnswer(this, false); triggerPopunder('quiz-opt-1')">Top Gun: Maverick</button>
+                            <button class="quiz-option popup-trigger" onclick="checkAnswer(this, true); triggerPopunder('quiz-opt-2')">Todo a la vez en todas partes</button>
+                            <button class="quiz-option popup-trigger" onclick="checkAnswer(this, false); triggerPopunder('quiz-opt-3')">Almas en pena de Inisherin</button>
+                            <button class="quiz-option popup-trigger" onclick="checkAnswer(this, false); triggerPopunder('quiz-opt-4')">Avatar: El sentido del agua</button>
                         </div>
-                        <div id="quizResult" style="margin-top: 1rem; font-weight: bold;"></div>
+                        <div id="quizResult" style="margin-top: 1rem; font-weight: bold; font-size: 1.1rem;"></div>
+                        <div style="margin-top: 1rem; color: #666;">
+                            <small>¡Nuevas preguntas se cargan automáticamente!</small>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Sección de Tendencias -->
+                <!-- Enhanced Trending Section -->
                 <div class="trending-section">
-                    <h3>🔥 Tendencias Ahora</h3>
+                    <h3>🔥 Tendencias Ahora - Lo Más Popular</h3>
                     <div class="trending-items">
-                        <span class="trending-tag" onclick="searchTrending(this)">#PelículasIA</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#JuegosRetro</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#K-Pop</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#Marvel</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#PelículasIndie</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#RealidadVirtual</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#GuerrasStreaming</span>
-                        <span class="trending-tag" onclick="searchTrending(this)">#TikToksVirales</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-ai')">#PelículasIA</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-retro')">#JuegosRetro</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-kpop')">#K-Pop</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-marvel')">#Marvel</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-indie')">#PelículasIndie</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-vr')">#RealidadVirtual</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-streaming')">#GuerrasStreaming</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-tiktok')">#TikToksVirales</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-anime')">#AnimeNuevo</span>
+                        <span class="trending-tag popup-trigger" onclick="searchTrending(this); triggerPopunder('trend-podcast')">#PodcastsTop</span>
+                    </div>
+                </div>
+
+                <!-- Additional Interactive Section -->
+                <div class="interactive-section" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                    <h3 style="color: white;">🎲 Recomendación Aleatoria</h3>
+                    <p style="margin-bottom: 2rem;">¿No sabes qué ver o jugar? ¡Deja que nosotros decidamos por ti!</p>
+                    <button class="cta-button popup-trigger" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52);" onclick="getRandomRecommendation(); triggerPopunder('random-rec')">Sorpréndeme</button>
+                    <div id="randomRecommendation" style="margin-top: 2rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 15px; display: none;">
+                        <h4 id="recTitle"></h4>
+                        <p id="recDescription"></p>
                     </div>
                 </div>
             </div>
 
-            <!-- Barra Lateral con Anuncios -->
+            <!-- Enhanced Sidebar with More Ads -->
             <div class="sidebar">
-                <div class="ad-sidebar" onclick="adClick('sidebar1')">
-                    <h4>🎧 Auriculares Premium</h4>
-                    <p>Experimenta un audio nítido</p>
-                    <small>¡Ahorra 40% Hoy!</small>
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar1'); triggerPopunder('sidebar-1')">
+                    <h4>🎧 Auriculares Premium Gaming</h4>
+                    <p>Experimenta un audio nítido y envolvente</p>
+                    <small style="color: #ff6b6b; font-weight: bold;">¡Ahorra 40% Hoy!</small>
                 </div>
 
-                <div class="ad-sidebar" onclick="adClick('sidebar2')">
-                    <h4>📱 Último Teléfono Gaming</h4>
-                    <p>La mejor experiencia de juego móvil</p>
-                    <small>Reserva Ahora</small>
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar2'); triggerPopunder('sidebar-2')">
+                    <h4>📱 Último Teléfono Gaming Pro</h4>
+                    <p>La mejor experiencia de juego móvil del mercado</p>
+                    <small style="color: #4CAF50; font-weight: bold;">Reserva Ahora - Stock Limitado</small>
                 </div>
 
-                <!-- Espacio para Anuncios LKVueBlocks (Sidebar - 1) -->
-                <div id="lkvueblocks-ad-sidebar-1" class="ad-sidebar" style="min-height: 150px; background: #e6e6fa; color: #555; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed #d1c4e9; margin-top: 15px;">
-                    <h4>Espacio Publicitario</h4>
+                <!-- LKVueBlocks Sidebar Ad 1 -->
+                <div id="lkvueblocks-ad-sidebar-1" class="ad-sidebar popup-trigger" style="min-height: 180px; background: linear-gradient(135deg, #e6e6fa, #d1c4e9); color: #555; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #d1c4e9; margin: 20px 0;" onclick="triggerPopunder('lkvue-sidebar-1')">
+                    <h4>📺 LKVueBlocks Premium</h4>
                     <p>Anuncios relevantes para ti</p>
+                    <small>Contenido patrocinado</small>
                 </div>
 
-                <div class="ad-sidebar" onclick="adClick('sidebar3')">
-                    <h4>🍿 Snacks para Noches de Cine</h4>
-                    <p>Palomitas gourmet a domicilio</p>
-                    <small>Envío Gratis</small>
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar3'); triggerPopunder('sidebar-3')">
+                    <h4>🍿 Snacks Gourmet para Cine</h4>
+                    <p>Palomitas artesanales y dulces premium a domicilio</p>
+                    <small style="color: #ff9800; font-weight: bold;">Envío Gratis - Pedido Mínimo $25</small>
                 </div>
 
-                <div class="ad-sidebar" onclick="adClick('sidebar4')">
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar4'); triggerPopunder('sidebar-4')">
                     <h4>🎬 Escuela de Cine Online</h4>
-                    <p>Aprende de profesionales de la industria</p>
-                    <small>Prueba Gratuita Disponible</small>
+                    <p>Aprende de directores y profesionales de Hollywood</p>
+                    <small style="color: #2196F3; font-weight: bold;">Prueba Gratuita de 7 Días</small>
                 </div>
 
-                <!-- Espacio para Anuncios LKVueBlocks (Sidebar - 2) -->
-                <div id="lkvueblocks-ad-sidebar-2" class="ad-sidebar" style="min-height: 150px; background: #e6e6fa; color: #555; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed #d1c4e9; margin-top: 15px;">
-                    <h4>Espacio Publicitario</h4>
-                    <p>Más anuncios para ti</p>
+                <!-- LKVueBlocks Sidebar Ad 2 -->
+                <div id="lkvueblocks-ad-sidebar-2" class="ad-sidebar popup-trigger" style="min-height: 180px; background: linear-gradient(135deg, #e6e6fa, #d1c4e9); color: #555; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #d1c4e9; margin: 20px 0;" onclick="triggerPopunder('lkvue-sidebar-2')">
+                    <h4>🎯 LKVueBlocks Ads</h4>
+                    <p>Más anuncios personalizados</p>
+                    <small>Basado en tus intereses</small>
                 </div>
 
-                <div class="ad-sidebar" onclick="adClick('sidebar5')">
-                    <h4>🎮 Silla Gaming Pro</h4>
-                    <p>Comodidad y rendimiento se unen</p>
-                    <small>Oferta por Tiempo Limitado</small>
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar5'); triggerPopunder('sidebar-5')">
+                    <h4>🎮 Silla Gaming Ergonómica Pro</h4>
+                    <p>Comodidad suprema y rendimiento se unen perfectamente</p>
+                    <small style="color: #9C27B0; font-weight: bold;">Oferta por Tiempo Limitado - 50% OFF</small>
+                </div>
+
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar6'); triggerPopunder('sidebar-6')">
+                    <h4>🎵 Servicio de Streaming Musical</h4>
+                    <p>Más de 100 millones de canciones sin anuncios</p>
+                    <small style="color: #E91E63; font-weight: bold;">3 Meses Gratis para Nuevos Usuarios</small>
+                </div>
+
+                <div class="ad-sidebar popup-trigger" onclick="adClick('sidebar7'); triggerPopunder('sidebar-7')">
+                    <h4>📚 Cursos de Desarrollo de Videojuegos</h4>
+                    <p>Crea tus propios juegos desde cero</p>
+                    <small style="color: #795548; font-weight: bold;">Certificado Incluido</small>
                 </div>
             </div>
         </div>
 
-        <!-- Suscripción a Boletín -->
-        <div class="newsletter">
-            <h3>¡Mantente Actualizado!</h3>
-            <p>Recibe las últimas noticias de entretenimiento, reseñas y contenido exclusivo directamente en tu bandeja de entrada.</p>
+        <!-- Enhanced Newsletter Section -->
+        <div class="newsletter popup-trigger" onclick="triggerPopunder('newsletter')">
+            <h3>🔔 ¡Mantente Siempre Actualizado!</h3>
+            <p>Recibe las últimas noticias de entretenimiento, reseñas exclusivas, ofertas especiales y contenido premium directamente en tu bandeja de entrada. ¡Únete a más de 50,000 suscriptores!</p>
             <div class="newsletter-form">
                 <input type="email" class="newsletter-input" placeholder="Introduce tu dirección de correo electrónico" id="emailInput">
-                <button class="newsletter-button" onclick="subscribe()">Suscribirse</button>
+                <button class="newsletter-button popup-trigger" onclick="subscribe(); triggerPopunder('newsletter-btn')">Suscribirse Gratis</button>
             </div>
+            <small style="margin-top: 1rem; display: block; opacity: 0.8;">No spam. Cancela cuando quieras. ¡Tu privacidad es importante!</small>
         </div>
 
-        <!-- Banner de Anuncio Inferior -->
-        <div class="ad-banner" onclick="adClick('bottom')">
-            🎵 ¡Streaming de Música Ilimitado - Prueba 3 Meses Gratis! ¡Únete a Millones de Oyentes Felices! 🎵
+        <!-- Bottom Ad Banner -->
+        <div class="ad-banner popup-trigger" onclick="adClick('bottom'); triggerPopunder('banner-bottom')">
+            🎵 ¡Streaming de Música Ilimitado - Prueba 3 Meses Gratis! ¡Únete a Millones de Oyentes Felices Ahora! 🎵
+        </div>
+
+        <!-- Additional Ad Banner -->
+        <div class="ad-banner popup-trigger" style="background: linear-gradient(45deg, #4CAF50, #45a049);" onclick="adClick('green-banner'); triggerPopunder('green-banner')">
+            🎮 ¡Nueva Consola Gaming Ya Disponible! Gráficos 4K Ultra HD - ¡Reserva Tu Unidad Ahora! 🎮
         </div>
     </div>
 
-    <!-- Sección de Pie de Página -->
+    <!-- Enhanced Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 EntertainMe. Todos los derechos reservados. | Política de Privacidad | Términos de Servicio</p>
-            <p>Monetizado a través de ubicaciones de anuncios estratégicas y asociaciones de afiliados</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <h4 style="margin-bottom: 1rem; color: #667eea;">EntertainMe</h4>
+                    <p>Tu destino #1 para entretenimiento premium y contenido actualizado diariamente.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem; color: #667eea;">Enlaces Rápidos</h4>
+                    <p><a href="#movies" style="color: white; text-decoration: none;">Películas</a> | <a href="#games" style="color: white; text-decoration: none;">Juegos</a> | <a href="#music" style="color: white; text-decoration: none;">Música</a></p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem; color: #667eea;">Síguenos</h4>
+                    <p>🐦 Twitter | 📘 Facebook | 📸 Instagram | 🎵 TikTok</p>
+                </div>
+            </div>
+            <hr style="border: none; height: 1px; background: rgba(255,255,255,0.2); margin: 2rem 0;">
+            <p>&copy; 2025 EntertainMe. Todos los derechos reservados. | <a href="#" style="color: #667eea;">Política de Privacidad</a> | <a href="#" style="color: #667eea;">Términos de Servicio</a></p>
+            <p style="margin-top: 1rem; opacity: 0.8;">Monetizado a través de ubicaciones de anuncios estratégicas y asociaciones premium</p>
         </div>
     </footer>
 
-    <!-- Estructura de Modal Personalizado -->
+    <!-- Enhanced Modal System -->
     <div id="customModal" class="modal-overlay">
         <div class="modal-content">
             <h3 id="modalTitle"></h3>
             <p id="modalMessage"></p>
-            <button class="modal-close-button" onclick="hideModal()">Cerrar</button>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button class="modal-close-button" onclick="hideModal()">Cerrar</button>
+                <button class="modal-close-button popup-trigger" style="background: linear-gradient(45deg, #4CAF50, #45a049);" onclick="hideModal(); triggerPopunder('modal-action')">Más Info</button>
+            </div>
         </div>
     </div>
 
-    <!-- Estructura del Indicador de Carga (Actualmente oculto, para uso futuro) -->
+    <!-- Notification System -->
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- Loading Indicator -->
     <div id="loadingIndicator" class="loading-indicator">
         <div class="spinner"></div>
     </div>
 
     <script>
-        // Variables globales para el seguimiento de métricas de participación
+        // Enhanced Global Variables
         let adClicks = 0;
-        let pageViews = 1; // Inicializar con 1 para la carga inicial de la página
+        let pageViews = 1;
         let userEngagement = 0;
+        let popunderCount = 0;
+        let sessionStartTime = Date.now();
+        let lastPopunderTime = 0;
+        const popunderCooldown = 3000; // 3 seconds between popunders
 
-        // --- Funciones de Modal Personalizado ---
-
-        /**
-         * Muestra un modal personalizado con un título y mensaje dados.
-         * @param {string} title - El título del modal.
-         * @param {string} message - El contenido del mensaje del modal.
-         * @param {string} [type='info'] - Tipo opcional ('success', 'error', 'info') para el estilo.
-         */
-        function showModal(title, message, type = 'info') {
-            const modalOverlay = document.getElementById('customModal');
-            const modalContent = modalOverlay.querySelector('.modal-content');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalMessage = document.getElementById('modalMessage');
-
-            // Establecer el contenido del modal
-            modalTitle.textContent = title;
-            modalMessage.textContent = message;
-
-            // Aplicar estilo específico del tipo
-            modalContent.className = 'modal-content'; // Reiniciar clases
-            modalContent.classList.add(type);
-
-            // Mostrar el modal
-            modalOverlay.classList.add('active');
+        // Enhanced Pop-under System
+        function triggerPopunder(source) {
+            const currentTime = Date.now();
+            
+            // Respect cooldown period
+            if (currentTime - lastPopunderTime < popunderCooldown) {
+                return;
+            }
+            
+            lastPopunderTime = currentTime;
+            popunderCount++;
+            
+            // Simulate popunder trigger (in real implementation, this would open a new window)
+            console.log(`🚀 Popunder triggered from: ${source} (#${popunderCount})`);
+            
+            // Track engagement
+            userEngagement += 2;
+            updateStats();
+            
+            // Show notification
+            showNotification(`Popunder activado desde: ${source}`, 'info');
+            
+            // Simulate different popunder behaviors based on source
+            const popunderTypes = {
+                'logo': 'Premium Entertainment Offers',
+                'nav-home': 'Home Entertainment Deals',
+                'nav-movies': 'Movie Streaming Promotions',
+                'nav-games': 'Gaming Hardware Discounts',
+                'nav-music': 'Music Streaming Services',
+                'cta-hero': 'Exclusive Entertainment Packages',
+                'banner-top': 'Top Banner Advertisers',
+                'featured-image': 'Featured Content Sponsors',
+                'movies-card': 'Movie Merchandise',
+                'games-card': 'Gaming Accessories',
+                'music-card': 'Audio Equipment',
+                'tv-card': 'Streaming Device Offers',
+                'default': 'General Entertainment Offers'
+            };
+            
+            const popunderType = popunderTypes[source] || popunderTypes['default'];
+            
+            // In a real implementation, you might open a new window here
+            // window.open('popunder-url', '_blank', 'width=800,height=600');
+            
+            setTimeout(() => {
+                console.log(`💰 Simulated revenue from popunder: ${(Math.random() * 5 + 1).toFixed(2)}`);
+            }, 1000);
         }
 
-        /**
-         * Oculta el modal personalizado.
-         */
-        function hideModal() {
-            const modalOverlay = document.getElementById('customModal');
-            modalOverlay.classList.remove('active');
-        }
-
-        // --- Funciones del Indicador de Carga ---
-
-        /**
-         * Muestra el indicador de carga.
-         */
-        function showLoading() {
-            document.getElementById('loadingIndicator').classList.add('active');
-        }
-
-        /**
-         * Oculta el indicador de carga.
-         */
-        function hideLoading() {
-            document.getElementById('loadingIndicator').classList.remove('active');
-        }
-
-        // --- Funciones Principales del Sitio Web ---
-
-        /**
-         * Maneja los clics en los anuncios, actualiza las métricas de participación y simula una redirección de anuncio.
-         * Utiliza el modal personalizado en lugar de alert().
-         * @param {string} adType - El tipo de anuncio clicado (por ejemplo, 'banner', 'sidebar1').
-         */
+        // Enhanced Ad Click Function
         function adClick(adType) {
             adClicks++;
             userEngagement += 10;
             updateStats();
             
-            // Simular la generación de ingresos
-            const revenue = (Math.random() * 2 + 0.5).toFixed(2);
-            showModal('¡Anuncio Clicado!', `Hiciste clic en un anuncio de tipo: ${adType}.\nEsto normalmente te redirigiría al sitio web del anunciante.\nIngresos simulados generados: $${revenue}`, 'info');
+            const revenue = (Math.random() * 3 + 0.8).toFixed(2);
+            showModal('¡Anuncio Clicado!', 
+                `Has clicado en: ${adType}\n\n🎯 Esto normalmente te redirigiría al sitio del anunciante.\n💰 Ingresos simulados: ${revenue}\n📊 Total de clics: ${adClicks}`, 
+                'success'
+            );
+            
+            // Trigger additional popunder on ad clicks
+            setTimeout(() => {
+                triggerPopunder(`ad-${adType}`);
+            }, 500);
         }
 
-        /**
-         * Muestra el contenido específico del tipo de entretenimiento seleccionado.
-         * Utiliza el modal personalizado en lugar de alert().
-         * @param {string} type - El tipo de contenido a mostrar (por ejemplo, 'movies', 'games').
-         */
+        // Enhanced Content Display
         function showContent(type) {
             userEngagement += 5;
             updateStats();
             
             const contentTypes = {
-                movies: "🎬 Últimas Películas: ¡Éxitos de taquilla, independientes y favoritos de la crítica te esperan!",
-                games: "🎮 Central de Juegos: ¡Reseñas, guías y los lanzamientos más populares!",
-                music: "🎵 Descubrimiento de Música: ¡Nuevos álbumes, artistas en tendencia y recomendaciones de listas de reproducción!",
-                tv: "📺 Programas de TV: ¡Series dignas de maratón y documentales imprescindibles!"
+                movies: {
+                    title: "🎬 Películas Premium",
+                    content: "¡Descubre los últimos éxitos de taquilla! Desde blockbusters de acción hasta dramas independientes galardonados. Incluye trailers exclusivos, reseñas detalladas y recomendaciones personalizadas."
+                },
+                games: {
+                    title: "🎮 Gaming Central",
+                    content: "¡El paraíso de los gamers te espera! Reseñas in-depth, guías completas, gameplay exclusivo y las últimas noticias de la industria. Compatible con PC, consolas y móviles."
+                },
+                music: {
+                    title: "🎵 Mundo Musical",
+                    content: "¡Explora infinitos géneros musicales! Desde los hits mainstream hasta joyas underground. Playlists curadas, entrevistas exclusivas con artistas y lanzamientos anticipados."
+                },
+                tv: {
+                    title: "📺 Series & TV Shows",
+                    content: "¡Maratones épicos te esperan! Series de culto, reality shows adictivos, documentales fascinantes y especiales exclusivos de tus plataformas favoritas."
+                }
             };
             
-            showModal(`Explorando ${type.charAt(0).toUpperCase() + type.slice(1)}`, contentTypes[type] || "Cargando contenido...", 'info');
+            const content = contentTypes[type];
+            showModal(content.title, content.content, 'info');
+            
+            // Trigger popunder for content views
+            setTimeout(() => {
+                triggerPopunder(`content-${type}`);
+            }, 1500);
         }
 
-        /**
-         * Comprueba la respuesta para la pregunta actual del quiz, actualiza la interfaz de usuario y proporciona retroalimentación.
-         * Utiliza el modal personalizado para la retroalimentación en lugar de alert().
-         * @param {HTMLElement} button - El elemento del botón que fue clicado.
-         * @param {boolean} isCorrect - Verdadero si la respuesta seleccionada es correcta, falso en caso contrario.
-         */
+        // Enhanced Quiz System
         function checkAnswer(button, isCorrect) {
             const resultElement = document.getElementById('quizResult');
             const options = document.querySelectorAll('.quiz-option');
             
-            // Deshabilitar todas las opciones para evitar selecciones múltiples
+            // Disable all options
             options.forEach(option => option.disabled = true);
             
             if (isCorrect) {
                 button.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
-                resultElement.innerHTML = '🎉 ¡Correcto! "Todo a la vez en todas partes" ganó Mejor Película!';
+                resultElement.innerHTML = '🎉 ¡Perfecto! ¡Respuesta correcta! +15 puntos de engagement';
                 resultElement.style.color = '#4CAF50';
                 userEngagement += 15;
-                showModal('Resultado del Quiz', '🎉 ¡Correcto! ¡Lo acertaste!', 'success');
+                showNotification('¡Respuesta correcta! 🎉', 'success');
+                
+                // Reward correct answers with popunder
+                setTimeout(() => {
+                    triggerPopunder('quiz-correct');
+                }, 800);
             } else {
                 button.style.background = 'linear-gradient(45deg, #f44336, #da190b)';
-                resultElement.innerHTML = '❌ ¡No del todo! La respuesta correcta es "Todo a la vez en todas partes"';
+                resultElement.innerHTML = '❌ ¡Oops! Inténtalo en la próxima pregunta. +5 puntos por participar';
                 resultElement.style.color = '#f44336';
                 userEngagement += 5;
-                showModal('Resultado del Quiz', '❌ ¡Incorrecto! Inténtalo de nuevo la próxima vez.', 'error');
+                showNotification('¡Sigue intentando! 💪', 'info');
             }
             
             updateStats();
             
-            // Reiniciar el quiz después de un breve retraso
+            // Auto-load new quiz after delay
             setTimeout(() => {
                 options.forEach(option => {
                     option.disabled = false;
                     option.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
                 });
                 resultElement.innerHTML = '';
-                loadNewQuiz(); // Cargar una nueva pregunta
-            }, 3000);
+                loadNewQuiz();
+            }, 3500);
         }
 
-        /**
-         * Carga una nueva pregunta de quiz aleatoria y actualiza la interfaz del quiz.
-         */
+        // Enhanced Quiz Loading with More Questions
         function loadNewQuiz() {
             const questions = [
                 {
-                    question: "¿Qué servicio de streaming produjo 'Stranger Things'?",
+                    question: "¿Qué servicio de streaming produjo la serie 'Stranger Things'?",
                     options: ["Netflix", "Disney+", "HBO Max", "Amazon Prime"],
                     correct: 0
                 },
                 {
-                    question: "¿Cuál es la película más taquillera de todos los tiempos?",
-                    options: ["Titanic", "Avatar", "Avengers: Endgame", "Star Wars: The Force Awakens"],
-                    correct: 1
+                    question: "¿Cuál es la película más taquillera de todos los tiempos (ajustada por inflación)?",
+                    options: ["Titanic", "Avatar", "Avengers: Endgame", "Lo que el viento se llevó"],
+                    correct: 3
                 },
                 {
-                    question: "¿Qué personaje de videojuego es conocido por coleccionar anillos?",
+                    question: "¿Qué personaje de videojuego es conocido por coleccionar anillos dorados?",
                     options: ["Mario", "Link", "Sonic", "Pac-Man"],
                     correct: 2
                 },
                 {
-                    question: "¿Quién compuso la banda sonora de 'El Rey León' (película animada de 1994)?",
+                    question: "¿Quién compuso la banda sonora de 'El Rey León' (1994)?",
                     options: ["Hans Zimmer", "John Williams", "Ennio Morricone", "Alan Menken"],
                     correct: 0
                 },
@@ -1205,132 +1347,358 @@
                     question: "¿Qué banda lanzó el álbum 'The Dark Side of the Moon'?",
                     options: ["Led Zeppelin", "The Beatles", "Pink Floyd", "Queen"],
                     correct: 2
+                },
+                {
+                    question: "¿En qué año se lanzó la primera PlayStation de Sony?",
+                    options: ["1994", "1995", "1996", "1997"],
+                    correct: 1
+                },
+                {
+                    question: "¿Qué director dirigió la película 'Pulp Fiction'?",
+                    options: ["Martin Scorsese", "Quentin Tarantino", "Steven Spielberg", "Christopher Nolan"],
+                    correct: 1
+                },
+                {
+                    question: "¿Cuál es la serie de TV más vista de Netflix hasta 2024?",
+                    options: ["Stranger Things", "Squid Game", "Bridgerton", "The Witcher"],
+                    correct: 1
+                },
+                {
+                    question: "¿Qué juego popularizó el género Battle Royale?",
+                    options: ["PUBG", "Fortnite", "Apex Legends", "H1Z1"],
+                    correct: 0
+                },
+                {
+                    question: "¿Qué artista tiene más streams en Spotify históricamente?",
+                    options: ["Drake", "Bad Bunny", "The Weeknd", "Taylor Swift"],
+                    correct: 0
                 }
             ];
             
-            // Seleccionar una pregunta aleatoria
             const randomQ = questions[Math.floor(Math.random() * questions.length)];
             document.getElementById('quizQuestion').textContent = randomQ.question;
             
             const options = document.querySelectorAll('.quiz-option');
             options.forEach((option, index) => {
                 option.textContent = randomQ.options[index];
-                // Actualizar el manejador de clics para pasar el índice de la respuesta correcta
                 option.onclick = () => checkAnswer(option, index === randomQ.correct);
             });
         }
 
-        /**
-         * Simula una búsqueda basada en la etiqueta de tendencia o categoría clicada.
-         * Utiliza el modal personalizado en lugar de alert().
-         * @param {HTMLElement} tag - El elemento de etiqueta de tendencia o categoría que fue clicado.
-         */
+        // Enhanced Search Function
         function searchTrending(tag) {
             userEngagement += 3;
             updateStats();
-            showModal('Búsqueda de Tendencias', `Buscando "${tag.textContent}"...\n¡Esto mostraría contenido y artículos relacionados!`, 'info');
+            
+            const searchTerms = {
+                'Acción': 'películas llenas de adrenalina, explosiones y secuencias épicas',
+                'Comedia': 'risas garantizadas con los mejores comediantes',
+                'Drama': 'historias profundas que tocarán tu corazón',
+                'Ciencia Ficción': 'aventuras futuristas y mundos imaginarios',
+                'Terror': 'sustos y horror para los más valientes',
+                'Aventura': 'expediciones épicas y descubrimientos increíbles',
+                'RPG': 'juegos de rol inmersivos con mundos fantásticos',
+                'Estrategia': 'desafía tu mente con juegos tácticos',
+                'Pop': 'los hits más pegajosos del momento',
+                'Rock': 'guitarras potentes y ritmos enérgicos',
+                'Hip-Hop': 'beats urbanos y letras auténticas',
+                'Clásica': 'la elegancia atemporal de la música orquestal'
+            };
+            
+            const searchTerm = tag.textContent.replace(/[🎬😂🎭🚀👻🗺️⚔️🧠🎵🎸🎤🎼]/g, '').trim();
+            const description = searchTerms[searchTerm] || 'contenido relacionado con tu búsqueda';
+            
+            showModal(`🔍 Buscando: ${searchTerm}`, 
+                `Explorando ${description}...\n\n¡Esto mostraría una página completa con contenido filtrado, reseñas, trailers y recomendaciones personalizadas!`, 
+                'info'
+            );
+            
+            // Trigger search-based popunder
+            setTimeout(() => {
+                triggerPopunder(`search-${searchTerm.toLowerCase()}`);
+            }, 1200);
         }
 
-        /**
-         * Maneja la suscripción al boletín, valida el correo electrónico y proporciona retroalimentación.
-         * Utiliza el modal personalizado en lugar de alert().
-         */
+        // Enhanced Newsletter Subscription
         function subscribe() {
             const emailInput = document.getElementById('emailInput');
-            const email = emailInput.value;
+            const email = emailInput.value.trim();
 
-            if (email && email.includes('@') && email.includes('.')) { // Validación básica de correo electrónico
-                userEngagement += 20;
+            if (email && email.includes('@') && email.includes('.')) {
+                userEngagement += 25;
                 updateStats();
-                showModal('¡Suscripción Exitosa!', `¡Gracias por suscribirte con ${email}!\nRecibirás nuestro boletín de entretenimiento semanalmente.`, 'success');
-                emailInput.value = ''; // Limpiar el campo de entrada
+                showModal('🎉 ¡Suscripción Exitosa!', 
+                    `¡Gracias por unirte con ${email}!\n\n📧 Recibirás:\n• Newsletter semanal con lo último en entretenimiento\n• Ofertas exclusivas para suscriptores\n• Acceso anticipado a contenido premium\n• Recomendaciones personalizadas\n\n¡Bienvenido a la familia EntertainMe!`, 
+                    'success'
+                );
+                emailInput.value = '';
+                showNotification('¡Bienvenido a EntertainMe! 🎊', 'success');
+                
+                // Newsletter subscription triggers premium popunder
+                setTimeout(() => {
+                    triggerPopunder('newsletter-premium');
+                }, 2000);
             } else {
-                showModal('Suscripción Fallida', 'Por favor, introduce una dirección de correo electrónico válida.', 'error');
+                showModal('❌ Suscripción Fallida', 
+                    'Por favor, introduce una dirección de correo electrónico válida.\n\nEjemplo: usuario@ejemplo.com', 
+                    'error'
+                );
+                showNotification('Email inválido ❌', 'error');
             }
         }
 
-        /**
-         * Desplaza suavemente la ventana gráfica al área de contenido principal.
-         */
+        // New Random Recommendation System
+        function getRandomRecommendation() {
+            const recommendations = [
+                {
+                    title: "🎬 Película: 'Dune: Parte Dos'",
+                    description: "Una épica continuación llena de acción espacial, efectos visuales impresionantes y una banda sonora extraordinaria."
+                },
+                {
+                    title: "🎮 Juego: 'Baldur's Gate 3'",
+                    description: "RPG inmersivo con decisiones que importan, combate táctico y una narrativa profunda que te mantendrá jugando por horas."
+                },
+                {
+                    title: "🎵 Álbum: 'Midnights' - Taylor Swift",
+                    description: "Un viaje nocturno a través de reflexiones íntimas y melodías cautivadoras que definen una era musical."
+                },
+                {
+                    title: "📺 Serie: 'The Last of Us'",
+                    description: "Drama post-apocalíptico que combina supervivencia, relaciones humanas y efectos prácticos excepcionales."
+                },
+                {
+                    title: "🎬 Película: 'Spider-Man: Across the Spider-Verse'",
+                    description: "Animación revolucionaria que redefine lo que puede ser una película de superhéroes."
+                },
+                {
+                    title: "🎮 Juego: 'The Legend of Zelda: Tears of the Kingdom'",
+                    description: "Aventura épica con mecánicas innovadoras y un mundo abierto lleno de secretos por descubrir."
+                }
+            ];
+            
+            const randomRec = recommendations[Math.floor(Math.random() * recommendations.length)];
+            const recDiv = document.getElementById('randomRecommendation');
+            const titleElement = document.getElementById('recTitle');
+            const descElement = document.getElementById('recDescription');
+            
+            titleElement.textContent = randomRec.title;
+            descElement.textContent = randomRec.description;
+            recDiv.style.display = 'block';
+            
+            userEngagement += 8;
+            updateStats();
+            showNotification('¡Nueva recomendación generada! 🎲', 'info');
+            
+            // Random recommendation triggers specialized popunder
+            setTimeout(() => {
+                triggerPopunder('random-recommendation');
+            }, 1500);
+        }
+
+        // Enhanced Scroll to Content
         function scrollToContent() {
             document.querySelector('.main-content').scrollIntoView({ 
                 behavior: 'smooth' 
             });
-            userEngagement += 2;
+            userEngagement += 3;
             updateStats();
+            showNotification('¡Explorando contenido! 🚀', 'info');
         }
 
-        /**
-         * Actualiza y registra las estadísticas de participación actuales.
-         * También actualiza el título de la página para reflejar la participación y los ingresos simulados.
-         */
+        // Enhanced Stats Tracking
         function updateStats() {
-            console.log(`Vistas de Página: ${pageViews} | Clics en Anuncios: ${adClicks} | Puntuación de Participación: ${userEngagement}`);
+            const sessionTime = Math.floor((Date.now() - sessionStartTime) / 1000);
+            const revenue = (adClicks * 1.85 + popunderCount * 2.3).toFixed(2);
             
-            // Actualizar el título de la página con métricas de participación
-            document.title = `EntertainMe - Participación: ${userEngagement} | Ingresos por Anuncios: $${(adClicks * 1.25).toFixed(2)}`;
+            console.log(`📊 STATS: Views: ${pageViews} | Ad Clicks: ${adClicks} | Popunders: ${popunderCount} | Engagement: ${userEngagement} | Session: ${sessionTime}s | Revenue: ${revenue}`);
+            
+            document.title = `EntertainMe - 🔥 Engagement: ${userEngagement} | 💰 Revenue: ${revenue} | 👀 Views: ${pageViews}`;
         }
 
-        /**
-         * Rastrea una vista de página, incrementando el contador de pageViews.
-         */
+        // Enhanced Modal System
+        function showModal(title, message, type = 'info') {
+            const modalOverlay = document.getElementById('customModal');
+            const modalContent = modalOverlay.querySelector('.modal-content');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+
+            modalContent.className = 'modal-content';
+            modalContent.classList.add(type);
+
+            modalOverlay.classList.add('active');
+            
+            // Auto-close modal after 8 seconds
+            setTimeout(() => {
+                if (modalOverlay.classList.contains('active')) {
+                    hideModal();
+                }
+            }, 8000);
+        }
+
+        function hideModal() {
+            const modalOverlay = document.getElementById('customModal');
+            modalOverlay.classList.remove('active');
+        }
+
+        // Enhanced Notification System
+        function showNotification(text, type = 'info') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = text;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Page View Tracking
         function trackPageView() {
             pageViews++;
-            console.log('Vista de página rastreada:', pageViews);
+            console.log('📄 Page view tracked:', pageViews);
+            showNotification(`Bienvenido! Vista #${pageViews} 👋`, 'info');
         }
 
-        /**
-         * Rota el énfasis visual en las etiquetas de tendencia para simular actividad.
-         */
+        // Enhanced Trending Rotation
         function rotateTrending() {
             const tags = document.querySelectorAll('.trending-tag');
             let currentIndex = 0;
             
             setInterval(() => {
-                // Eliminar el resaltado de la etiqueta anterior
                 tags.forEach(tag => tag.style.transform = 'scale(1)');
-                // Resaltar la etiqueta actual
-                tags[currentIndex].style.transform = 'scale(1.1)';
-                // Pasar a la siguiente etiqueta
+                if (tags[currentIndex]) {
+                    tags[currentIndex].style.transform = 'scale(1.05)';
+                    tags[currentIndex].style.boxShadow = '0 5px 15px rgba(255,255,255,0.3)';
+                }
                 currentIndex = (currentIndex + 1) % tags.length;
-            }, 2000); // Cambiar de etiqueta cada 2 segundos
+            }, 2500);
         }
 
-        // --- Oyentes de Eventos e Inicialización ---
+        // Enhanced Loading Indicator
+        function showLoading() {
+            document.getElementById('loadingIndicator').classList.add('active');
+        }
 
-        // Asegura que el DOM esté completamente cargado antes de ejecutar los scripts
-        document.addEventListener('DOMContentLoaded', function() {
-            trackPageView(); // Rastrear la vista inicial de la página
-            loadNewQuiz(); // Cargar la primera pregunta del quiz
-            rotateTrending(); // Iniciar la rotación de etiquetas de tendencia
-            updateStats(); // Actualización inicial de estadísticas
-            
-            // Simular actividad continua del usuario para fines de demostración
+        function hideLoading() {
+            document.getElementById('loadingIndicator').classList.remove('active');
+        }
+
+        // Advanced User Activity Simulation
+        function simulateUserActivity() {
             setInterval(() => {
-                userEngagement += 1; // Incrementar la participación con el tiempo
-                if (Math.random() < 0.1) { // 10% de probabilidad de simular una impresión de anuncio
-                    console.log('Impresión de anuncio registrada');
+                userEngagement += 1;
+                
+                // Random ad impression simulation
+                if (Math.random() < 0.15) {
+                    console.log('📺 Ad impression registered');
                 }
-                updateStats(); // Actualizar estadísticas periódicamente
-            }, 5000); // Cada 5 segundos
-        });
+                
+                // Random popunder opportunity
+                if (Math.random() < 0.08 && (Date.now() - lastPopunderTime) > popunderCooldown) {
+                    triggerPopunder('auto-activity');
+                }
+                
+                updateStats();
+            }, 6000);
+        }
 
-        // Rastrear la profundidad de desplazamiento para la participación
-        let maxScroll = 0; // Rastrea el porcentaje máximo de desplazamiento alcanzado
+        // Enhanced Scroll Tracking
+        let maxScroll = 0;
         window.addEventListener('scroll', () => {
-            // Calcular el porcentaje de desplazamiento
             const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
             if (scrollPercent > maxScroll) {
-                maxScroll = scrollPercent; // Actualizar el desplazamiento máximo
-                // Añadir participación basada en la profundidad de desplazamiento (por ejemplo, cada 25% desplazado)
-                userEngagement += Math.floor(scrollPercent / 25);
+                maxScroll = scrollPercent;
+                userEngagement += Math.floor(scrollPercent / 20);
+                
+                // Trigger scroll-based popunders at certain points
+                if (scrollPercent === 25 || scrollPercent === 50 || scrollPercent === 75) {
+                    setTimeout(() => {
+                        triggerPopunder(`scroll-${scrollPercent}`);
+                    }, 1000);
+                }
+                
                 updateStats();
+            }
+        });
+
+        // Enhanced Click Tracking
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('popup-trigger') || e.target.closest('.popup-trigger')) {
+                userEngagement += 1;
+                updateStats();
+            }
+        });
+
+        // Page Visibility API for engagement tracking
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                userEngagement += 5;
+                showNotification('¡Bienvenido de vuelta! 👋', 'info');
+                updateStats();
+            }
+        });
+
+        // Enhanced Page Load Events
+        document.addEventListener('DOMContentLoaded', function() {
+            trackPageView();
+            loadNewQuiz();
+            rotateTrending();
+            updateStats();
+            simulateUserActivity();
+            
+            // Welcome message
+            setTimeout(() => {
+                showNotification('¡Bienvenido a EntertainMe! 🎉', 'success');
+            }, 1500);
+            
+            // Delayed popunder for new visitors
+            setTimeout(() => {
+                if (popunderCount === 0) {
+                    triggerPopunder('welcome-visitor');
+                }
+            }, 10000);
+            
+            console.log('🚀 EntertainMe fully loaded with enhanced popunder system!');
+        });
+
+        // Close modal on outside click
+        document.getElementById('customModal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                hideModal();
+            }
+        });
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideModal();
+            }
+        });
+
+        // Enhanced Error Handling
+        window.addEventListener('error', (e) => {
+            console.error('Page Error:', e.error);
+            showNotification('Ocurrió un error técnico 🔧', 'error');
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            const loadTime = performance.now();
+            console.log(`⚡ Page loaded in ${loadTime.toFixed(2)}ms`);
+            if (loadTime > 3000) {
+                showNotification('Página cargada completamente ✅', 'success');
             }
         });
     </script>
 
-    <!-- Scripts de Monetización de Anuncios - Añadidos con fines de monetización -->
-    <!-- Script Popunder -->
+    <!-- Enhanced Monetization Scripts -->
+    
+    <!-- Primary Popunder Script -->
     <script>
     (function(hyxh){
     var d = document,
@@ -1344,7 +1712,21 @@
     })({})
     </script>
 
-    <!-- Script de Banners MultiTag 1 -->
+    <!-- Secondary Popunder Script -->
+    <script>
+    (function(hyxh2){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = hyxh2 || {};
+    s.src = "\/\/mustymix.com\/c\/D.9v6Jb_2N5\/lZSBWwQY9zN\/jzUfyPNGzXYb0POoSg0r2KNfT\/Id3\/Nkj\/Uowf";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- MultiTag Banner Script 1 -->
     <script>
     (function(cpds){
     var d = document,
@@ -1358,7 +1740,7 @@
     })({})
     </script>
 
-    <!-- Script de Banners MultiTag 2 -->
+    <!-- MultiTag Banner Script 2 -->
     <script>
     (function(vpnez){
     var d = document,
@@ -1372,7 +1754,21 @@
     })({})
     </script>
 
-    <!-- Script LKVueBlocks.invocTypeMultitagVast -->
+    <!-- MultiTag Banner Script 3 (Additional) -->
+    <script>
+    (function(mtag3){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = mtag3 || {};
+    s.src = "\/\/whirlwindincrease.com\/bFXBVis-d.G\/l_0wY\/WncB\/ae\/mN9RuhZVUul\/kkP\/TGYT1rMmj\/c\/2-NHjwYUtBNvj\/UpyvNTzZYQ2eNZwl";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- LKVueBlocks Script 1 -->
     <script>
     (function(lh){
     var d = document,
@@ -1386,16 +1782,88 @@
     })({})
     </script>
 
-    <!-- Script de Anuncio VAST (URL Directa) -->
+    <!-- LKVueBlocks Script 2 (Additional) -->
     <script>
-        // Este script carga directamente la etiqueta de anuncio VAST.
-        // En un escenario real, esto podría integrarse con un reproductor de video
-        // o un administrador de anuncios más sofisticado.
-        const vastScript = document.createElement('script');
-        vastScript.src = "https://mustymix.com/dCmqFQz.dcG/NnvYZtGsUw/zekmZ9ju/ZAU/l-kHPhTkYA1/MOjMc/2QO/DEYpteNSjlUFywNBz_Yq4QNfwf";
-        vastScript.async = true;
-        vastScript.referrerPolicy = 'no-referrer-when-downgrade';
-        document.body.appendChild(vastScript);
+    (function(lh2){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = lh2 || {};
+    s.src = "\/\/whirlwindincrease.com\/bbXeV.sodbGZl\/0\/YUWacI\/MeQmP9wuHZ\/UblMk\/PbTgY\/1xMsjcc\/2RNyzEYntiNgjgUmykN\/z\/Y-3HNKwE";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
     </script>
+
+    <!-- VAST Ad Script (Direct URL) -->
+    <script>
+        // Enhanced VAST ad loading with multiple attempts
+        const vastScripts = [
+            "https://mustymix.com/dCmqFQz.dcG/NnvYZtGsUw/zekmZ9ju/ZAU/l-kHPhTkYA/1/MOjMc/2QO/DEYpteNSjlUFywNBz_Yq4QNfwf",
+            "https://mustymix.com/dCmqFQz.dcG/NnvYZtGsUw/zekmZ9ju/ZAU/l-kHPhTkYA/1/MOjMc/2QO/DEYpteNSjlUFywNBz_Yq4QNfwf"
+        ];
+        
+        vastScripts.forEach((scriptUrl, index) => {
+            const vastScript = document.createElement('script');
+            vastScript.src = scriptUrl;
+            vastScript.async = true;
+            vastScript.referrerPolicy = 'no-referrer-when-downgrade';
+            vastScript.onerror = () => console.log(`VAST script ${index + 1} failed to load`);
+            vastScript.onload = () => console.log(`VAST script ${index + 1} loaded successfully`);
+            document.body.appendChild(vastScript);
+        });
+    </script>
+
+    <!-- Additional Popunder Scripts for Higher Coverage -->
+    <script>
+    (function(pop3){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = pop3 || {};
+    s.src = "\/\/mustymix.com\/c\/D.9v6Jb_2N5\/lZSBWwQY9zN\/jzUfyPNGzXYb0POoSg0r2KNfT\/Id3\/Nkj\/Uowf";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
+
+    <!-- Performance and Analytics -->
+    <script>
+        // Enhanced analytics tracking
+        (function() {
+            const analytics = {
+                pageLoadTime: performance.now(),
+                adImpressions: 0,
+                userInteractions: 0,
+                scrollDepth: 0,
+                timeOnPage: 0
+            };
+            
+            // Track time on page
+            setInterval(() => {
+                analytics.timeOnPage += 1;
+            }, 1000);
+            
+            // Track scroll depth
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                analytics.scrollDepth = Math.max(analytics.scrollDepth, scrolled);
+            });
+            
+            // Track user interactions
+            document.addEventListener('click', () => {
+                analytics.userInteractions++;
+            });
+            
+            // Send analytics before page unload
+            window.addEventListener('beforeunload', () => {
+                console.log('📊 Final Analytics:', analytics);
+                // In real implementation, send to analytics server
+            });
+        })();
+    </script>
+
 </body>
 </html>
