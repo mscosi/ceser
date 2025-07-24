@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EntertainMe - Your Ultimate Entertainment Hub</title>
+    <title>EntertainMe - Tu Universo de Entretenimiento</title>
     <style>
-        /* Estilos Globales */
+        /* --- Reset y Estilos Globales --- */
+        :root {
+            --color-background: #0d0c1d;
+            --color-surface: #16152d;
+            --color-primary: #a855f7; /* Púrpura */
+            --color-secondary: #ec4899; /* Rosa */
+            --color-accent: #06b6d4; /* Cian */
+            --color-text: #e2e8f0;
+            --color-text-muted: #94a3b8;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,1008 +24,399 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            background-color: var(--color-background);
+            color: var(--color-text);
             line-height: 1.6;
-            padding-top: 120px; /* Space for sticky header + ad */
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
+            width: 90%;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Sticky Top Ad Banner */
-        .sticky-top-ad {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        /* Encabezado */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             padding: 1rem 0;
-            position: fixed;
-            top: 50px;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        /* --- Encabezado y Navegación --- */
+        header {
+            background: rgba(13, 12, 29, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 60px; /* Espacio para el banner superior */
+            z-index: 999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
         .nav-links a {
+            color: var(--color-text-muted);
             text-decoration: none;
-            color: #333;
+            margin-left: 1.5rem;
             font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: var(--color-text);
+            text-shadow: 0 0 8px var(--color-primary);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #667eea;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Floating Ad */
-        .floating-ad {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 160px;
-            height: 600px;
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            border-radius: 15px;
-            z-index: 999;
+        /* --- ZONAS DE ANUNCIOS ESTRATÉGICAS --- */
+        .ad-placeholder {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #333;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border: 1px dashed var(--color-text-muted);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            overflow: hidden;
         }
 
-        .floating-ad:hover {
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .floating-ad-close {
-            position: absolute;
-            top: 5px;
-            right: 8px;
-            background: rgba(255,255,255,0.8);
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        /* Banners de Anuncios */
-        .ad-banner {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 15px;
-            font-weight: bold;
-            box-shadow: 0 8px 32px rgba(255, 154, 158, 0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ad-banner:hover {
-            transform: translateY(-5px);
-        }
-
-        .ad-banner.large {
-            min-height: 200px;
-            font-size: 1.2rem;
-        }
-
-        .ad-sidebar {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            color: #333;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin: 15px 0;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ad-sidebar:hover {
-            transform: scale(1.05);
-        }
-
-        /* Video Ad Container */
-        .video-ad-container {
-            background: #000;
-            border-radius: 15px;
-            margin: 30px 0;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            position: relative;
-        }
-
-        /* Interstitial Ad Modal */
-        .interstitial-ad {
+        /* 1. Banner Adhesivo Superior (MultiTag) */
+        #ad-sticky-top {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            display: none;
+            height: 60px; /* Altura del banner */
+            background: #000;
+            z-index: 1001;
+            border-bottom: 2px solid var(--color-primary);
+            box-shadow: 0 4px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        /* 2. Anuncios In-Feed (MultiTag y LKVue) */
+        .ad-in-feed {
+            min-height: 250px;
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        /* 3. Anuncio en el "Reproductor de Video" (VAST + Banner) */
+        .video-ad-container {
+            position: relative;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+            margin: 2rem 0;
+            border: 2px solid var(--color-secondary);
+        }
+
+        .video-ad-placeholder {
+            aspect-ratio: 16 / 9;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            background: url('https://placehold.co/1280x720/0d0c1d/ec4899?text=VIDEO+DESTACADO') center/cover;
+            transition: transform 0.3s ease;
+        }
+        .video-ad-placeholder:hover {
+            transform: scale(1.02);
         }
 
-        .interstitial-content {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 80%;
-            max-height: 80%;
-            position: relative;
+        .play-button {
+            font-size: 5rem;
+            color: rgba(255,255,255,0.8);
+            text-shadow: 0 0 20px var(--color-secondary);
         }
-
-        .interstitial-close {
+        
+        #ad-video-overlay {
             position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            height: 90px;
+            z-index: 10;
         }
 
-        /* Sección Hero */
-        .hero {
+
+        /* --- Secciones de Contenido --- */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             text-align: center;
-            padding: 4rem 0;
-            color: white;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.4s both;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
-        }
-
-        /* Contenido Principal */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 300px 200px;
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .content-area {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .sidebar-ads {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Tarjetas de Contenido */
+        /* --- Grid de Contenido Principal --- */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin-top: 2rem;
         }
 
         .content-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            background: var(--color-surface);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s ease;
-            opacity: 0;
-        }
-
-        .content-card:hover::before {
-            animation: shimmer 0.8s ease;
-            opacity: 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
         .content-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
         }
 
-        .content-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* Sección de Contenido Destacado */
-        .featured-section {
-            background: linear-gradient(135deg, #fecfef, #ff9a9e);
-            color: #333;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(254, 207, 239, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .featured-section h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #764ba2;
-        }
-
-        .featured-image {
+        .card-image {
             width: 100%;
-            max-width: 400px;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--color-primary);
         }
 
-        .featured-description {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        .card-content {
+            padding: 1.5rem;
         }
 
-        /* Más secciones de contenido */
-        .section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
         }
 
-        .section h3 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+        .card-description {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
         }
 
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1500;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-
-        .modal-close-button {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(255, 107, 107, 0.3);
-        }
-
-        /* Sticky Bottom Ad */
-        .sticky-bottom-ad {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
-        }
-
-        .sticky-bottom-close {
+        .card-tag {
             position: absolute;
-            top: 5px;
-            right: 10px;
-            background: rgba(255,255,255,0.2);
-            border: none;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             color: white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-        }
-
-        /* Exit Intent Popup */
-        .exit-intent-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 2500;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .exit-popup-content {
-            background: white;
-            padding: 40px;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- Pie de Página --- */
+        footer {
+            background: var(--color-surface);
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            max-width: 600px;
-            animation: bounceIn 0.5s ease;
+        }
+        
+        .footer-ad-container {
+            padding: 2rem 0;
+            min-height: 100px;
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+        .copyright {
+            margin-top: 1rem;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
         }
 
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        @keyframes bounceIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.05);
-            }
-            70% {
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Responsive Design */
+        /* --- Diseño Responsivo --- */
         @media (max-width: 768px) {
-            .main-content {
+            .logo { font-size: 1.5rem; }
+            .nav-links { display: none; } /* Simplificando para el ejemplo, se podría añadir un menú hamburguesa */
+            .section-title { font-size: 2rem; }
+            .content-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .floating-ad {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .sticky-top-ad {
-                font-size: 0.9rem;
-                height: 40px;
-            }
-            
-            header {
-                top: 40px;
-            }
-            
-            body {
-                padding-top: 100px;
-            }
-        }
-
-        /* In-content Ad Styles */
-        .in-content-ad {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            min-height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .in-content-ad:hover {
-            transform: scale(1.02);
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Sticky Top Ad -->
-    <div class="sticky-top-ad" id="stickyTopAd">
-        🎬 PREMIUM ENTERTAINMENT - CLICK FOR EXCLUSIVE DEALS! 🎬
+
+    <!-- ====================================================== -->
+    <!-- ÁREA DE MONETIZACIÓN 1: Banner Adhesivo Superior (MultiTag) -->
+    <!-- ====================================================== -->
+    <div id="ad-sticky-top" class="ad-placeholder">
+        <span>Cargando Anuncio...</span>
+        <!-- El script de MultiTag se encargará de rellenar este espacio -->
     </div>
 
-    <!-- Floating Ad -->
-    <div class="floating-ad" id="floatingAd">
-        <button class="floating-ad-close" onclick="closeFloatingAd()">&times;</button>
-        <div>
-            <h4>🎮 Gaming Deals</h4>
-            <p>Up to 70% OFF!</p>
-        </div>
-    </div>
-
-    <!-- Interstitial Ad -->
-    <div class="interstitial-ad" id="interstitialAd">
-        <div class="interstitial-content">
-            <button class="interstitial-close" onclick="closeInterstitial()">&times;</button>
-            <h2>🎵 Music Streaming Premium</h2>
-            <p>Get 6 months FREE! Limited time offer.</p>
-            <button class="cta-button" onclick="adClick('interstitial')">Claim Now</button>
-        </div>
-    </div>
-
-    <!-- Exit Intent Popup -->
-    <div class="exit-intent-popup" id="exitPopup">
-        <div class="exit-popup-content">
-            <h2>Wait! Don't Miss Out!</h2>
-            <p>Get exclusive entertainment deals before you leave!</p>
-            <button class="cta-button" onclick="adClick('exit-intent')">Show Me Deals</button>
-            <button style="margin-left: 10px;" onclick="closeExitPopup()">No Thanks</button>
-        </div>
-    </div>
-
-    <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="logo">EntertainMe</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#movies">Movies</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#music">Music</a></li>
-                <li><a href="#trending">Trending</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">EntertainMe</div>
+                <div class="nav-links">
+                    <a href="#">Películas</a>
+                    <a href="#">Series</a>
+                    <a href="#">Juegos</a>
+                    <a href="#">Música</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Welcome to EntertainMe</h1>
-            <p>Your ultimate destination for movies, games, music, and endless entertainment</p>
-            <button class="cta-button" onclick="scrollToContent()">Explore Now</button>
+    <main class="container">
+
+        <!-- ====================================================== -->
+        <!-- ÁREA DE MONETIZACIÓN 2: Video Ad (VAST + Banner Overlay) -->
+        <!-- ====================================================== -->
+        <section class="video-ad-container">
+            <div class="video-ad-placeholder">
+                <div class="play-button">▶</div>
+            </div>
+            <!-- Banner que se superpone en el video -->
+            <div id="ad-video-overlay" class="ad-placeholder">
+                 <span>Anuncio de Video</span>
+            </div>
         </section>
 
-        <!-- Top Banner Ad -->
-        <div class="ad-banner large" id="topBanner">
-            🎬 PREMIUM STREAMING - 50% OFF TODAY ONLY! CLICK FOR AMAZING DEALS! 🎬
+        <!-- ====================================================== -->
+        <!-- ÁREA DE MONETIZACIÓN 3: Anuncio In-Feed (LKVueBlocks) -->
+        <!-- ====================================================== -->
+        <div id="lkvue-ad-1" class="ad-placeholder ad-in-feed">
+            <span>Cargando Anuncio Relevante...</span>
         </div>
 
-        <!-- Video Ad Container -->
-        <div class="video-ad-container" id="videoAdContainer">
-            🎥 Video Advertisement Loading... 🎥
+        <!-- Sección de Contenido Principal -->
+        <section id="latest-releases">
+            <h2 class="section-title">Últimos Lanzamientos</h2>
+            <div class="content-grid">
+                <!-- Card 1 -->
+                <div class="content-card">
+                    <div class="card-tag">PELÍCULA</div>
+                    <img src="https://placehold.co/600x400/a855f7/ffffff?text=Cyber+Odyssey" alt="Cyber Odyssey" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Cyber Odyssey</h3>
+                        <p class="card-description">Una aventura épica en un futuro distópico. ¿Podrá la humanidad sobrevivir a la IA?</p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="content-card">
+                    <div class="card-tag">JUEGO</div>
+                    <img src="https://placehold.co/600x400/ec4899/ffffff?text=Galaxy+Racer" alt="Galaxy Racer" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Galaxy Racer</h3>
+                        <p class="card-description">Compite en carreras a velocidades imposibles a través de nebulosas y campos de asteroides.</p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="content-card">
+                    <div class="card-tag">SERIE</div>
+                    <img src="https://placehold.co/600x400/06b6d4/ffffff?text=Neon+Detectives" alt="Neon Detectives" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Neon Detectives</h3>
+                        <p class="card-description">Dos detectives resuelven crímenes en una ciudad empapada de lluvia y luces de neón.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- ÁREA DE MONETIZACIÓN 4: Anuncio In-Feed (MultiTag) -->
+        <!-- ====================================================== -->
+        <div id="multitag-ad-1" class="ad-placeholder ad-in-feed">
+             <span>Cargando Más Contenido Para Ti...</span>
         </div>
-
-        <!-- Main Content Area -->
-        <div class="main-content">
-            <div class="content-area">
-                <!-- Featured Section -->
-                <div class="featured-section">
-                    <h3>✨ Featured This Week: "Cosmic Odyssey"</h3>
-                    <img src="https://placehold.co/400x250/667eea/ffffff?text=Cosmic+Odyssey" alt="Cosmic Odyssey Movie Poster" class="featured-image">
-                    <p class="featured-description">Embark on an epic journey through the stars in this stunning sci-fi adventure!</p>
-                    <button class="cta-button" onclick="showContent('movies')">Watch Now</button>
-                </div>
-
-                <!-- In-Content Ad 1 -->
-                <div class="in-content-ad" id="inContentAd1">
-                    🎮 GAMING GEAR SALE - UP TO 80% OFF! 🎮
-                </div>
-
-                <h2>Latest Entertainment</h2>
-                
-                <div class="content-grid">
-                    <div class="content-card" onclick="showContent('movies')">
-                        <h3>🎬 Blockbuster Movies</h3>
-                        <p>Discover the latest blockbusters, indie films, and timeless classics.</p>
-                    </div>
-                    
-                    <div class="content-card" onclick="showContent('games')">
-                        <h3>🎮 Gaming Zone</h3>
-                        <p>Dive into the gaming world with reviews, guides, and latest releases.</p>
-                    </div>
-                    
-                    <div class="content-card" onclick="showContent('music')">
-                        <h3>🎵 Music Hub</h3>
-                        <p>Explore new artists, chart-toppers, and hidden gems from all genres.</p>
-                    </div>
-                    
-                    <div class="content-card" onclick="showContent('tv')">
-                        <h3>📺 TV Shows</h3>
-                        <p>Binge-worthy series, reality shows, documentaries and more.</p>
+        
+        <section id="trending-now">
+            <h2 class="section-title">Tendencias</h2>
+            <div class="content-grid">
+                <!-- Card 4 -->
+                <div class="content-card">
+                    <div class="card-tag">MÚSICA</div>
+                    <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Synthwave+Dreams" alt="Synthwave Dreams" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Album: Synthwave Dreams</h3>
+                        <p class="card-description">La banda sonora perfecta para conducir de noche. El último hit de "Midnight Echoes".</p>
                     </div>
                 </div>
-
-                <!-- In-Content Ad 2 -->
-                <div class="in-content-ad" id="inContentAd2">
-                    🍿 MOVIE THEATER EXPERIENCE AT HOME! 🍿
+                <!-- Card 5 -->
+                <div class="content-card">
+                    <div class="card-tag">PELÍCULA</div>
+                    <img src="https://placehold.co/600x400/10b981/ffffff?text=The+Last+Guardian" alt="The Last Guardian" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">The Last Guardian</h3>
+                        <p class="card-description">Un drama post-apocalíptico que te mantendrá al borde de tu asiento. Aclamada por la crítica.</p>
+                    </div>
                 </div>
-
-                <!-- Additional Sections for More Content -->
-                <div class="section">
-                    <h3>🎪 Entertainment News</h3>
-                    <p>Stay updated with the latest happenings in Hollywood, gaming industry, and music world. From red carpet events to game launches, we cover it all!</p>
-                </div>
-
-                <div class="section">
-                    <h3>🏆 Awards & Recognition</h3>
-                    <p>Follow award seasons, from Oscars to Game Awards. See who's winning and what's trending in the entertainment industry.</p>
-                </div>
-
-                <!-- In-Content Ad 3 -->
-                <div class="in-content-ad" id="inContentAd3">
-                    🎧 PREMIUM AUDIO EXPERIENCE - TRY FREE! 🎧
-                </div>
-
-                <div class="section">
-                    <h3>🎨 Behind the Scenes</h3>
-                    <p>Get exclusive behind-the-scenes content from your favorite movies, TV shows, and games. Interviews with directors, actors, and developers.</p>
-                </div>
-
-                <div class="section">
-                    <h3>📱 Mobile Entertainment</h3>
-                    <p>Discover the best mobile games, streaming apps, and entertainment content optimized for your smartphone and tablet.</p>
-                </div>
-
-                <!-- In-Content Ad 4 -->
-                <div class="in-content-ad" id="inContentAd4">
-                    📺 4K STREAMING DEVICE - SPECIAL OFFER! 📺
-                </div>
-
-                <div class="section">
-                    <h3>🌟 Celebrity Spotlights</h3>
-                    <p>Exclusive interviews and profiles of your favorite celebrities from movies, music, and gaming industries.</p>
+                <!-- Card 6 -->
+                <div class="content-card">
+                    <div class="card-tag">JUEGO</div>
+                    <img src="https://placehold.co/600x400/6366f1/ffffff?text=Rogue+Elements" alt="Rogue Elements" class="card-image">
+                    <div class="card-content">
+                        <h3 class="card-title">Rogue Elements</h3>
+                        <p class="card-description">Un RPG de acción con mundos generados proceduralmente. Cada partida es única.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Primary Sidebar -->
-            <div class="sidebar">
-                <div class="ad-sidebar" id="sidebarAd1">
-                    <h4>🎧 Premium Headphones</h4>
-                    <p>Crystal clear audio experience</p>
-                    <small>Save 40% Today!</small>
-                </div>
+    </main>
 
-                <div class="ad-sidebar" id="sidebarAd2">
-                    <h4>📱 Latest Gaming Phone</h4>
-                    <p>Ultimate mobile gaming experience</p>
-                    <small>Pre-order Now</small>
-                </div>
-
-                <div class="ad-sidebar" id="sidebarAd3">
-                    <h4>🍿 Movie Night Snacks</h4>
-                    <p>Gourmet popcorn delivered</p>
-                    <small>Free Shipping</small>
-                </div>
-
-                <div class="ad-sidebar" id="sidebarAd4">
-                    <h4>🎬 Film School Online</h4>
-                    <p>Learn from industry professionals</p>
-                    <small>Free Trial Available</small>
-                </div>
-
-                <div class="ad-sidebar" id="sidebarAd5">
-                    <h4>🎮 Gaming Chair Pro</h4>
-                    <p>Comfort meets performance</p>
-                    <small>Limited Time Offer</small>
-                </div>
-            </div>
-
-            <!-- Secondary Sidebar for More Ads -->
-            <div class="sidebar-ads">
-                <div class="ad-sidebar" id="extraAd1">
-                    <h4>🎵 Music Studio</h4>
-                    <p>Create your own beats</p>
-                    <small>Try Free</small>
-                </div>
-
-                <div class="ad-sidebar" id="extraAd2">
-                    <h4>🎭 Theater Tickets</h4>
-                    <p>Broadway shows</p>
-                    <small>Book Now</small>
-                </div>
-
-                <div class="ad-sidebar" id="extraAd3">
-                    <h4>📚 Entertainment Books</h4>
-                    <p>Behind the scenes stories</p>
-                    <small>50% Off</small>
-                </div>
-
-                <div class="ad-sidebar" id="extraAd4">
-                    <h4>🎪 Event Tickets</h4>
-                    <p>Concerts & festivals</p>
-                    <small>Early Bird</small>
-                </div>
-
-                <div class="ad-sidebar" id="extraAd5">
-                    <h4>🎯 Entertainment Quiz</h4>
-                    <p>Test your knowledge</p>
-                    <small>Win Prizes</small>
-                </div>
+    <footer>
+        <!-- ====================================================== -->
+        <!-- ÁREA DE MONETIZACIÓN 5: Anuncio en el Footer (MultiTag) -->
+        <!-- ====================================================== -->
+        <div class="container footer-ad-container">
+            <div id="multitag-ad-2" class="ad-placeholder" style="min-height:100px;">
+                <span>Anuncio Final</span>
             </div>
         </div>
 
-        <!-- Newsletter Section -->
-        <div class="section">
-            <h3>📧 Stay Updated!</h3>
-            <p>Get the latest entertainment news, reviews, and exclusive content delivered to your inbox.</p>
-            <div style="display: flex; gap: 1rem; margin-top: 1rem; justify-content: center;">
-                <input type="email" style="padding: 1rem; border: none; border-radius: 10px; flex: 1; max-width: 300px;" placeholder="Enter your email" id="emailInput">
-                <button class="cta-button" onclick="subscribe()">Subscribe</button>
-            </div>
-        </div>
-
-        <!-- Bottom Banner Ad -->
-        <div class="ad-banner large" id="bottomBanner">
-            🎵 UNLIMITED MUSIC STREAMING - 3 MONTHS FREE! JOIN MILLIONS OF HAPPY LISTENERS! 🎵
-        </div>
-    </div>
-
-    <!-- Sticky Bottom Ad -->
-    <div class="sticky-bottom-ad" id="stickyBottomAd">
-        <button class="sticky-bottom-close" onclick="closeStickyBottom()">&times;</button>
-        🎮 GAMING SALE - UP TO 90% OFF - LIMITED TIME! 🎮
-    </div>
-
-    <!-- Footer -->
-    <footer style="background: rgba(0, 0, 0, 0.8); color: white; padding: 2rem 0; text-align: center; margin-top: 2rem;">
         <div class="container">
-            <p>&copy; 2025 EntertainMe. All rights reserved. | Privacy Policy | Terms of Service</p>
-            <p>Monetized through strategic ad placements and affiliate partnerships</p>
+            <div class="footer-links">
+                <a href="#">Sobre Nosotros</a>
+                <a href="#">Contacto</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos de Servicio</a>
+            </div>
+            <p class="copyright">&copy; 2025 EntertainMe. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Modal Structure -->
-    <div id="customModal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 id="modalTitle"></h3>
-            <p id="modalMessage"></p>
-            <button class="modal-close-button" onclick="hideModal()">Close</button>
-        </div>
-    </div>
 
-    <script>
-        // Global variables for engagement tracking
-        let adClicks = 0;
-        let pageViews = 1;
-        let userEngagement = 0;
-        let adRevenue = 0;
-        let exitIntentShown = false;
+    <!-- ====================================================== -->
+    <!-- SCRIPTS DE MONETIZACIÓN - HILLTOP ADS -->
+    <!-- Colocados al final para no bloquear la carga de la página -->
+    <!-- ====================================================== -->
 
-        // Modal Functions
-        function showModal(title, message) {
-            document.getElementById('modalTitle').textContent = title;
-            document.getElementById('modalMessage').textContent = message;
-            document.getElementById('customModal').classList.add('active');
-        }
-
-        function hideModal() {
-            document.getElementById('customModal').classList.remove('active');
-        }
-
-        // Ad Click Handler
-        function adClick(adType) {
-            adClicks++;
-            userEngagement += 10;
-            
-            // Simulate revenue based on ad type
-            let revenue = 0;
-            switch(adType) {
-                case 'banner': revenue = Math.random() * 3 + 1; break;
-                case 'sidebar': revenue = Math.random() * 2 + 0.5; break;
-                case 'video': revenue = Math.random() * 5 + 2; break;
-                case 'interstitial': revenue = Math.random() * 8 + 3; break;
-                case 'exit-intent': revenue = Math.random() * 10 + 5; break;
-                default: revenue = Math.random() * 2 + 0.5;
-            }
-            
-            adRevenue += revenue;
-            updateStats();
-            
-            showModal('Ad Clicked!', `Revenue generated: $${revenue.toFixed(2)}\nTotal today: $${adRevenue.toFixed(2)}`);
-        }
-
-        // Content Functions
-        function showContent(type) {
-            userEngagement += 5;
-            updateStats();
-            
-            const contents = {
-                movies: "🎬 Latest Movies: Blockbusters, indies, and critic favorites await!",
-                games: "🎮 Gaming Central: Reviews, guides, and hottest releases!",
-                music: "🎵 Music Discovery: New albums, trending artists, and playlist recommendations!",
-                tv: "📺 TV Shows: Binge-worthy series and must-watch documentaries!"
-            };
-            
-            showModal(`Exploring ${type}`, contents[type] || "Loading content...");
-            
-            // Show interstitial ad after content views
-            if (Math.random() < 0.3) {
-                setTimeout(showInterstitial, 2000);
-            }
-        }
-
-        // Interstitial Ad
-        function showInterstitial() {
-            document.getElementById('interstitialAd').style.display = 'flex';
-            userEngagement += 5;
-            updateStats();
-        }
-
-        function closeInterstitial() {
-            document.getElementById('interstitialAd').style.display = 'none';
-        }
-
-        // Floating Ad
-        function closeFloatingAd() {
-            document.getElementById('floatingAd').style.display = 'none';
-        }
-
-        // Sticky Ads
-        function closeStickyBottom() {
-            document.getElementById('stickyBottomAd').style.display = 'none';
-        }
-
-        // Exit Intent
-        function showExitIntent() {
-            if (!exitIntentShown) {
-                document.getElementById('exitPopup').style.display = 'flex';
-                exitIntentShown = true;
-            }
-        }
-
-        function closeExitPopup() {
-            document.getElementById('exitPopup').style.display = 'none';
-        }
-
-        // Newsletter
-        function subscribe() {
-            const email = document.getElementById('emailInput').value;
-            if (email && email.includes('@')) {
-                userEngagement += 20;
-                updateStats();
-                showModal('Subscription Successful!', `Thanks for subscribing with ${email}!`);
-                document.getElementById('emailInput').value = '';
-            } else {
-                showModal('Invalid Email', 'Please enter a valid email address.');
-            }
-        }
-
-        // Scroll to content
-        function scrollToContent() {
-            document.querySelector('.main-content').scrollIntoView({ behavior: 'smooth' });
-            userEngagement += 2;
-            updateStats();
-        }
-
-        // Update stats
-        function updateStats() {
-            console.log(`Page Views: ${pageViews} | Ad Clicks: ${adClicks} | Engagement: ${userEngagement} | Revenue: $${adRevenue.toFixed(2)}`);
-            document.title = `EntertainMe - Revenue: $${adRevenue.toFixed(2)} | Engagement: ${userEngagement}`;
-        }
-
-        // Initialize ads and tracking
-        document.addEventListener('DOMContentLoaded', function() {
-            updateStats();
-            
-            // Add click handlers to all ads
-            document.querySelectorAll('.ad-banner, .ad-sidebar, .in-content-ad, .sticky-top-ad, .sticky-bottom-ad, .floating-ad').forEach(ad => {
-                if (!ad.onclick) {
-                    ad.onclick = () => adClick('banner');
-                }
-            });
-            
-            // Video ad click
-            document.getElementById('videoAdContainer').onclick = () => adClick('video');
-            
-            // Exit intent detection
-            document.addEventListener('mouseleave', function(e) {
-                if (e.clientY <= 0) {
-                    showExitIntent();
-                }
-            });
-            
-            // Timed popups
-            setTimeout(showInterstitial, 30000); // Show after 30 seconds
-            setTimeout(() => {
-                if (Math.random() < 0.7) showInterstitial();
-            }, 60000); // Show after 1 minute with 70% chance
-            
-            // Simulate continuous engagement
-            setInterval(() => {
-                userEngagement += 1;
-                if (Math.random() < 0.05) { // 5% chance of ad impression
-                    adRevenue += Math.random() * 0.5;
-                }
-                updateStats();
-            }, 3000);
-            
-            // Auto-rotate ads
-            setInterval(() => {
-                const ads = document.querySelectorAll('.ad-banner, .ad-sidebar');
-                ads.forEach(ad => {
-                    if (Math.random() < 0.1) {
-                        ad.style.background = `linear-gradient(45deg, hsl(${Math.random()*360}, 70%, 60%), hsl(${Math.random()*360}, 70%, 70%))`;
-                    }
-                });
-            }, 10000);
-        });
-
-        // Track scroll depth
-        let maxScroll = 0;
-        window.addEventListener('scroll', () => {
-            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-            if (scrollPercent > maxScroll) {
-                maxScroll = scrollPercent;
-                userEngagement += Math.floor(scrollPercent / 10);
-                updateStats();
-            }
-        });
-    </script>
-
-    <!-- Hill Top Ads Integration -->
-    
-    <!-- Popunder Script -->
+    <!-- 1. Popunder (Se activa con la interacción del usuario) -->
     <script>
     (function(ndabsjm){
     var d = document,
@@ -1028,36 +429,8 @@
     l.parentNode.insertBefore(s, l);
     })({})
     </script>
-
-    <!-- MultiTag Banner Script 1 -->
-    <script>
-    (function(qk){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.scripts[d.scripts.length - 1];
-    s.settings = qk || {};
-    s.src = "\/\/whirlwindincrease.com\/bBXJV.skd_GOl_0KYQWNcx\/ieEmb9au\/Z\/UUlzkNPbTBYW1eMijoco2yNZjuYrtPNfj\/UAyGNmzgY_2WNxwg";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
-    </script>
-
-    <!-- MultiTag Banner Script 2 -->
-    <script>
-    (function(xvfej){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.scripts[d.scripts.length - 1];
-    s.settings = xvfej || {};
-    s.src = "\/\/whirlwindincrease.com\/bqXsV.sddzGalY0aY\/Wmcb\/refmw9\/uYZ\/UwlIkcPCTyYR1QMEjCcF2\/NcT\/cvtANwj\/UYy\/NazvYB1MOcAY";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
-    </script>
-
-    <!-- LKVueBlocks.invocTypeMultitagVast Script -->
+    
+    <!-- 2. LKVueBlocks (Rellena espacios designados como #lkvue-ad-1) -->
     <script>
     (function(pgxd){
     var d = document,
@@ -1071,109 +444,36 @@
     })({})
     </script>
 
-    <!-- VAST Video Ad Script -->
+    <!-- 3. MultiTag Banner 1 (Rellena #ad-sticky-top y #multitag-ad-1) -->
     <script>
-    // VAST URL integration
-    const vastUrl = "https://mustymix.com/dPmNF_zgd.GTNnvxZxGVUy/iecmj9Xu-ZlUZlBkmPpTLY/1vM-jQc/2nOVDXY/teNfjiUHyVNUzsYj4aNYwz";
-    
-    // Initialize VAST player
-    function initVastPlayer() {
-        const videoContainer = document.getElementById('videoAdContainer');
-        
-        // Create video element for VAST
-        const video = document.createElement('video');
-        video.controls = true;
-        video.style.width = '100%';
-        video.style.height = '100%';
-        video.style.borderRadius = '15px';
-        
-        // Load VAST ad
-        fetch(vastUrl)
-            .then(response => response.text())
-            .then(vastXml => {
-                // Process VAST XML and create video ad
-                videoContainer.innerHTML = '';
-                videoContainer.appendChild(video);
-                
-                // Add play button overlay
-                const playButton = document.createElement('div');
-                playButton.innerHTML = '▶️ Play Video Ad';
-                playButton.style.position = 'absolute';
-                playButton.style.top = '50%';
-                playButton.style.left = '50%';
-                playButton.style.transform = 'translate(-50%, -50%)';
-                playButton.style.background = 'rgba(0,0,0,0.7)';
-                playButton.style.color = 'white';
-                playButton.style.padding = '20px';
-                playButton.style.borderRadius = '10px';
-                playButton.style.cursor = 'pointer';
-                playButton.onclick = () => {
-                    adClick('video');
-                    playButton.style.display = 'none';
-                    video.play();
-                };
-                
-                videoContainer.style.position = 'relative';
-                videoContainer.appendChild(playButton);
-            })
-            .catch(error => {
-                console.log('VAST ad loading, using placeholder');
-                videoContainer.innerHTML = '<div style="color: white; font-size: 1.2rem;">🎥 Premium Video Ad - Click to Play 🎥</div>';
-                videoContainer.onclick = () => adClick('video');
-            });
-    }
-    
-    // Initialize VAST player when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initVastPlayer);
-    } else {
-        initVastPlayer();
-    }
+    (function(qk){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = qk || {};
+    s.src = "\/\/whirlwindincrease.com\/bBXJV.skd_GOl_0KYQWNcx\/ieEmb9au\/Z\/UUlzkNPbTBYW1eMijoco2yNZjuYrtPNfj\/UAyGNmzgY_2WNxwg";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
     </script>
 
-    <!-- Additional Revenue Optimization Scripts -->
+    <!-- 4. MultiTag Banner 2 (Rellena #ad-video-overlay y #multitag-ad-2) -->
     <script>
-    // Advanced ad rotation and optimization
-    function optimizeAdPlacements() {
-        const adElements = document.querySelectorAll('.ad-banner, .ad-sidebar, .in-content-ad');
-        
-        adElements.forEach((ad, index) => {
-            // Rotate ad content every 30 seconds
-            setInterval(() => {
-                const adTypes = [
-                    '🎬 MOVIE STREAMING - PREMIUM ACCESS!',
-                    '🎮 GAMING GEAR - MASSIVE DISCOUNTS!',
-                    '🎵 MUSIC STREAMING - FREE TRIAL!',
-                    '📱 TECH GADGETS - LATEST RELEASES!',
-                    '🍿 ENTERTAINMENT PACKAGES - SAVE BIG!'
-                ];
-                ad.innerHTML = adTypes[Math.floor(Math.random() * adTypes.length)];
-            }, (index + 1) * 30000);
-        });
-    }
-    
-    // Initialize optimization
-    setTimeout(optimizeAdPlacements, 5000);
-    
-    // Revenue tracking and analytics
-    function trackRevenue() {
-        setInterval(() => {
-            // Simulate ad impressions and revenue
-            if (Math.random() < 0.3) { // 30% chance every 5 seconds
-                adRevenue += Math.random() * 1.5 + 0.5;
-                updateStats();
-            }
-        }, 5000);
-    }
-    
-    trackRevenue();
-    
-    // Auto-click simulation for testing (remove in production)
-    // setInterval(() => {
-    //     if (Math.random() < 0.1) { // 10% chance
-    //         adClick('auto');
-    //     }
-    // }, 10000);
+    (function(xvfej){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = xvfej || {};
+    s.src = "\/\/whirlwindincrease.com\/bqXsV.sddzGalY0aY\/Wmcb\/refmw9\/uYZ\/UwlIkcPCTyYR1QMEjCcF2\/NcT\/cvtANwj\/UYy\/NazvYB1MOcAY";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
     </script>
+
+    <!-- 5. VAST (Para el reproductor de video) -->
+    <script async src="https://mustymix.com/dPmNF_zgd.GTNnvxZxGVUy/iecmj9Xu-ZlUZlBkmPpTLY/1vM-jQc/2nOVDXY/teNfjiUHyVNUzsYj4aNYwz"></script>
+
 </body>
 </html>
